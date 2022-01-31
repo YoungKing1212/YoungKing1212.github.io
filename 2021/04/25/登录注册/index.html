@@ -1,0 +1,1575 @@
+<!DOCTYPE html>
+<html>
+  <!-- meta/link... -->
+  
+
+
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+  <title>登录注册 | 杨先生の小破站</title>
+
+  <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
+  <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
+  <link href="https://cdn.jsdelivr.net/gh/inkss/fontawesome@5.15.3/css/all.min.css" rel="stylesheet">
+  <link href="/js/swiper/swiper@5.4.1.min.css" rel="stylesheet">
+  
+  
+    <script>
+        var themeModelId = '';
+        if (themeModelId) {
+            localStorage.setItem('modelId', themeModelId);
+        }
+    </script>
+    
+    <script src="https://cdn.jsdelivr.net/gh/yuang01/live2d-widget@latest/autoload.js"></script>
+    <script>
+        var live2dOpen = eval('true') || false;
+        if (!live2dOpen) {
+            localStorage.setItem('waifu-display', 1609323474481);
+        }
+    </script>
+  
+  
+  
+<link rel="stylesheet" href="/css/animate.min.css">
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+    
+<link rel="stylesheet" href="/js/fancybox/jquery.fancybox.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="/js/shareJs/share.min.css">
+
+  
+  <style>
+        @media (max-width: 992px) {
+            #waifu {
+                display: none;
+            }
+        }
+    </style>
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+
+    
+
+    <!-- import link -->
+    
+        
+            
+        
+            
+        
+    
+    <!-- import script -->
+    
+        
+            
+        
+            
+        
+    
+
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+  
+  <!-- 依赖于jquery和vue -->
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+
+  
+
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.min.js"></script>
+
+  
+  
+  <body>
+    <!-- 预加载动画 -->
+    <!-- 页面预加载动画 -->
+
+<div id='loader'>
+  <link rel="stylesheet" href="/js/loaded/index.css" >
+  <div class="loading-left-bg"></div>
+  <div class="loading-right-bg"></div>
+  <div class="spinner-box">
+    <div class="configure-border-1">
+      <div class="configure-core"></div>
+    </div>
+    <div class="configure-border-2">
+      <div class="configure-core"></div>
+    </div>
+    <div class="loading-word">loading...</div>
+  </div>
+</div>
+
+<script>
+  var endLoading = function () {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loader').classList.add("loading");
+  }
+  window.addEventListener('DOMContentLoaded',endLoading);
+  
+</script>
+
+    
+    <!-- 判断是否为暗黑风格 -->
+    <!-- 判断是否为黑夜模式 -->
+<script>
+  let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+
+  if (isDark) {
+    $(document.body).addClass('darkModel');
+  }
+</script>
+
+    <!-- 需要在上面加载的js -->
+    <script>
+  function loadScript(src, cb) {
+    return new Promise(resolve => {
+      setTimeout(function () {
+        var HEAD = document.getElementsByTagName("head")[0] || document.documentElement;
+        var script = document.createElement("script");
+        script.setAttribute("type", "text/javascript");
+        if (cb) {
+          if (JSON.stringify(cb)) {
+            for (let p in cb) {
+              if (p == "onload") {
+                script[p] = () => {
+                  cb[p]()
+                  resolve()
+                }
+              } else {
+                script[p] = cb[p]
+                script.onload = resolve
+              }
+            }
+          } else {
+            script.onload = () => {
+              cb()
+              resolve()
+            };
+          }
+        } else {
+          script.onload = resolve
+        }
+        script.setAttribute("src", src);
+        HEAD.appendChild(script);
+      });
+    });
+  }
+
+  //https://github.com/filamentgroup/loadCSS
+  var loadCSS = function (href, before, media, attributes) {
+    return new Promise(resolve => {
+      setTimeout(function () {
+        var link = document.createElement('link');
+        link.rel = "stylesheet";
+        link.href = src;
+        link.onload = resolve;
+        document.getElementsByTagName("head")[0].appendChild(link);
+      });
+    });
+  };
+
+</script> 
+
+<!-- 轮播图所需要的js -->
+<script src="/js/swiper/swiper.min.js"></script>
+<script src="/js/swiper/vue-awesome-swiper.js"></script>
+<script src="/js/swiper/swiper.animate1.0.3.min.js"></script>
+
+<script type="text/javascript">
+  Vue.use(window.VueAwesomeSwiper)
+</script>
+
+
+  <script src="/js/vue-typed-js/index.js"></script>
+
+
+<!-- 首页的公告滚动插件的js需要重新加载 -->
+<script src="/js/vue-seamless-scroll/index.js"></script>
+
+<!-- 打字机效果js -->
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
+
+
+    <div id="safearea">
+      <main class="main" id="pjax-container">
+        <!-- 头部导航 -->
+        
+<header class="header   " 
+  id="navHeader"
+  style="position: fixed;
+  left: 0; top: 0; z-index: 10;width: 100%;"
+>
+  <div class="header-content">
+    <div class="bars">
+      <div id="appDrawer" class="sidebar-image">
+  <div class="drawer-box-icon">
+    <i class="fas fa-bars" aria-hidden="true" @click="showDialogDrawer"></i>
+  </div>
+  
+  <transition name="fade">
+    <div class="drawer-box_mask" v-cloak style="display: none;" v-show="visible" @click.self="cancelDialogDrawer">
+    </div>
+  </transition>
+  <div class="drawer-box" :class="{'active': visible}">
+    <div class="drawer-box-head bg-color">
+      <img class="drawer-box-head_logo lazyload placeholder" src="/medias/logo.png" class="lazyload placeholder" data-srcset="/medias/logo.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="logo">
+      <h3 class="drawer-box-head_title">杨先生の小破站</h3>
+      <h5 class="drawer-box-head_desc"></h5>
+    </div>
+    
+    <div class="drawer-box-content">
+      <ul class="drawer-box-content_menu">
+        
+        
+          <li class="drawer-box-content_item">
+            <a target="_blank" rel="noopener" href="https://gitee.com/yangkai991212/dashboard/projects">
+              <i class="fas fa-github" aria-hidden="true"></i>
+              <span>Github</span>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appDrawer',
+    data: {
+      visible: false,
+      top: 0,
+      openArr: [],
+    },
+    computed: {
+    },
+    mounted() {
+    },
+    methods: {
+      isOpen(index) {
+        if (this.openArr.includes(index)) {
+          return true;
+        } else {
+          return false;
+        }
+      },
+      openOrCloseMenu(curIndex) {
+        const index = this.openArr.indexOf(curIndex);
+        if (index !== -1) {
+          this.openArr.splice(index, 1);
+        } else {
+          this.openArr.push(curIndex);
+        }
+      },
+      showDialogDrawer() {
+        this.visible = true;
+        // 防止页面滚动，只能让弹框滚动
+        this.top = $(document).scrollTop()
+        body.style.cssText = 'width: 100%; height: 100%;overflow: hidden;';
+      },
+      cancelDialogDrawer() {
+        this.visible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      }
+    },
+    created() {}
+  })
+</script>
+
+    </div>
+    <div class="blog-title" id="author-avatar">
+      
+        <div class="avatar">
+          <img src="/medias/logo.png" class="lazyload placeholder" data-srcset="/medias/logo.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="logo">
+        </div>
+      
+      <a href="/" class="logo">杨先生の小破站</a>
+    </div>
+    <nav class="navbar">
+      <ul class="menu">
+        
+      </ul>
+      
+      
+        <div id="appSearch">
+  <div class="search"  @click="showDialog()"><i class="fas fa-search" aria-hidden="true"></i></div>
+  <transition name="fade">
+    <div class="message-box_wrapper" style="display: none;" v-cloak v-show="dialogVisible" @click.self="cancelDialogVisible()">
+      <div class="message-box animated bounceInDown">
+        <h2>
+          <span>
+            <i class="fas fa-search" aria-hidden="true"></i>
+            <span class="title">Search</span>
+          </span>
+          <i class="fas fa-times close" pointer style="float:right;" aria-hidden="true" @click.self="cancelDialogVisible()"></i>
+        </h2>
+        <form class="site-search-form">
+          <input type="text"
+            placeholder="Please enter keywords"
+            id="local-search-input" 
+            @click="getSearchFile()"
+            class="st-search-input"
+            v-model="searchInput"
+          />
+        </form>
+        <div class="result-wrapper">
+          <div id="local-search-result" class="local-search-result-cls"></div>
+        </div>
+      </div>
+    </div>
+  </transition>
+</div>
+<script src="/js/local_search.js"></script>
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appSearch',
+    data: {
+      dialogVisible: false,
+      searchInput: '',
+      top: 0,
+    },
+    computed: {
+    },
+    mounted() {
+      window.addEventListener('pjax:complete', () => {
+        this.cancelDialogVisible();
+      })
+    },
+    methods: {
+      showDialog() {
+        this.dialogVisible = true;
+        // 防止页面滚动，只能让弹框滚动
+        this.top = $(document).scrollTop()
+        body.style.cssText = 'overflow: hidden;';
+      },
+      getSearchFile() {
+        if (!this.searchInput) {
+          getSearchFile("/search.xml");
+        }
+      },
+      cancelDialogVisible() {
+        this.dialogVisible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      },
+    },
+    created() {}
+  })
+</script>
+<!-- 解决刷新页面闪烁问题，可以在元素上添加display: none, 或者用vue.extend方法，详情：https://blog.csdn.net/qq_31393401/article/details/81017912 -->
+<!-- 下面是搜索基本写法 -->
+<!-- <script type="text/javascript" id="local.search.active">
+  var inputArea = document.querySelector("#local-search-input");
+  inputArea.onclick   = function(){ getSearchFile(); this.onclick = null }
+  inputArea.onkeydown = function(){ if(event.keyCode == 13) return false }
+</script> -->
+
+      
+
+    </nav>
+  </div>
+  
+    <a target="_blank" rel="noopener" href="https://gitee.com/yangkai991212/dashboard/projects" class="github-corner color-primary" aria-label="View source on GitHub"><svg width="60" height="60" viewBox="0 0 250 250" style="fill:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+  
+  
+</header>
+        <!-- 内容区域 -->
+        
+ <!-- prismjs 代码高亮 -->
+ 
+
+
+<div class="bg-dark-floor" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -1;"></div>
+
+
+  <!-- 文章详情页顶部图片和标题 -->
+
+
+
+
+<div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
+  background-position: center center;position: relative;background-image:url('/medias/8.jpg')">
+  <div class="post-detail-header-mask"></div>
+  <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
+  
+  <div class="post-detail-header_info-box">
+    <div class="title-box">
+      <span class="title">
+        登录注册
+      </span>
+    </div>
+    
+    
+      
+        <span class="post-detail-header_date">
+          <i class="fas fa-calendar"></i> Published in：2021-04-25 |
+        </span>
+      
+
+      
+
+      
+    
+  </div>
+  
+  
+    <script src="/js/bubble/bubble.js"></script>
+  
+</div>
+
+
+
+
+
+<div class="row justify-position" 
+  style="padding-top: 0px;">
+  <div class="main-content">
+    <article class="post post-detail">
+      <div class="post-content">
+        <h3 id="登录注册模块"><a href="#登录注册模块" class="headerlink" title="登录注册模块"></a>登录注册模块</h3><ul>
+<li>1.获取用户的手机号，发送短信，进行短信验证登录</li>
+<li>2.登录成功后判断是否为新用户</li>
+<li>3.如果是新用户需要完善个人资料，上传头像信息</li>
+<li>4.如果是老用户，进入首页</li>
+</ul>
+<span id="more"></span>
+
+<p><img src="https://i.loli.net/2021/04/25/dK2R54ijB7LleAF.png" class="lazyload placeholder" data-srcset="https://i.loli.net/2021/04/25/dK2R54ijB7LleAF.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg"></p>
+<h4 id="获取验证码"><a href="#获取验证码" class="headerlink" title="获取验证码"></a>获取验证码</h4><ul>
+<li>1.获取用户的手机号</li>
+<li>2.拿着用户的用户的手机号拼接好的redisKey去redis中查找验证码是否过期，如果没有过期直接返回</li>
+<li>3.如果验证码为空的话，调用阿里云的Sms短信平台进行短信验证码的获取</li>
+<li>4.这里需要进行判断阿里云的Sms是否成功发送短信，判断获取到的验证码是否为空，为空记录日志报异常，不为空的话，将其存入到redis中，并设置其过期时间即可。<strong>保存的时候需要保存包含手机号的redisKey,验证码和过期时间</strong></li>
+</ul>
+<h5 id="controller"><a href="#controller" class="headerlink" title="controller"></a>controller</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 发送短信验证码接口</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> param</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@PostMapping(&quot;/login&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> ResponseEntity&lt;ErrorResult&gt; <span class="title">sendCheckCode</span><span class="params">(<span class="meta">@RequestBody</span> Map&lt;String, String&gt; param)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">   <span class="comment">//获取到请求的手机号</span></span><br><span class="line">   String phone = param.get(<span class="string">&quot;phone&quot;</span>);</span><br><span class="line">   ErrorResult errorResult = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">try</span> &#123;</span><br><span class="line">      <span class="comment">//调用service层的发送短信验证码的方法，errorResult表示返回给前台的对象，未发生错误返回200，发生错误返回该对象</span></span><br><span class="line">      errorResult = smsService.sendCheckCode(phone);</span><br><span class="line">      <span class="comment">//如果errorResult为空的话，证明发送成功，返回200</span></span><br><span class="line">      <span class="keyword">if</span> (<span class="keyword">null</span> == errorResult) &#123;</span><br><span class="line">         <span class="keyword">return</span> ResponseEntity.ok(<span class="keyword">null</span>);</span><br><span class="line">      &#125;</span><br><span class="line">   &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">      <span class="comment">//try发生异常，捕获异常信息，并打印手机号和异常</span></span><br><span class="line">      log.error(<span class="string">&quot;发送验证码失败~ phone = &quot;</span> + phone, e);</span><br><span class="line">      <span class="comment">//发生异常构建errorResult对象</span></span><br><span class="line">      errorResult = ErrorResult.builder().errCode(<span class="string">&quot;000002&quot;</span>).errMessage(<span class="string">&quot;短信验证码发送失败~&quot;</span>).build();</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="comment">//发生错误返回catch中构建的异常对象</span></span><br><span class="line">   <span class="keyword">return</span> ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorResult);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="service"><a href="#service" class="headerlink" title="service"></a>service</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 阿里云接口获取短信验证码</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> mobile</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">sendSms</span><span class="params">(String mobile)</span> </span>&#123;</span><br><span class="line">   DefaultProfile profile = DefaultProfile.getProfile(<span class="keyword">this</span>.aliyunSMSConfig.getRegionId(),</span><br><span class="line">         <span class="keyword">this</span>.aliyunSMSConfig.getAccessKeyId(), <span class="keyword">this</span>.aliyunSMSConfig.getAccessKeySecret());</span><br><span class="line">   IAcsClient client = <span class="keyword">new</span> DefaultAcsClient(profile);</span><br><span class="line"></span><br><span class="line">   String code = RandomUtils.nextInt(<span class="number">100000</span>, <span class="number">999999</span>) + <span class="string">&quot;&quot;</span>;</span><br><span class="line"></span><br><span class="line">   CommonRequest request = <span class="keyword">new</span> CommonRequest();</span><br><span class="line">   request.setSysMethod(MethodType.POST);</span><br><span class="line">   request.setSysDomain(<span class="keyword">this</span>.aliyunSMSConfig.getDomain());</span><br><span class="line">   request.setSysVersion(<span class="string">&quot;2017-05-25&quot;</span>);</span><br><span class="line">   request.setSysAction(<span class="string">&quot;SendSms&quot;</span>);</span><br><span class="line">   request.putQueryParameter(<span class="string">&quot;RegionId&quot;</span>, <span class="keyword">this</span>.aliyunSMSConfig.getRegionId());</span><br><span class="line">   request.putQueryParameter(<span class="string">&quot;PhoneNumbers&quot;</span>, mobile); <span class="comment">//目标手机号</span></span><br><span class="line">   request.putQueryParameter(<span class="string">&quot;SignName&quot;</span>, <span class="keyword">this</span>.aliyunSMSConfig.getSignName()); <span class="comment">//签名名称</span></span><br><span class="line">   request.putQueryParameter(<span class="string">&quot;TemplateCode&quot;</span>,</span><br><span class="line">         <span class="keyword">this</span>.aliyunSMSConfig.getTemplateCode()); <span class="comment">//短信模板code</span></span><br><span class="line">   request.putQueryParameter(<span class="string">&quot;TemplateParam&quot;</span>, <span class="string">&quot;&#123;\&quot;code\&quot;:\&quot;&quot;</span> + code + <span class="string">&quot;\&quot;&#125;&quot;</span>);<span class="comment">//模板中变量替换</span></span><br><span class="line">   <span class="keyword">try</span> &#123;</span><br><span class="line">      CommonResponse response = client.getCommonResponse(request);</span><br><span class="line">      String data = response.getData();</span><br><span class="line">      <span class="keyword">if</span> (StringUtils.contains(data, <span class="string">&quot;\&quot;Message\&quot;:\&quot;OK\&quot;&quot;</span>)) &#123;</span><br><span class="line">         <span class="keyword">return</span> code;</span><br><span class="line">      &#125;</span><br><span class="line">      log.info(<span class="string">&quot;发送短信验证码失败~ data = &quot;</span> + data);</span><br><span class="line">   &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">      log.error(<span class="string">&quot;发送短信验证码失败~ mobile = &quot;</span> + mobile, e);</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 发送短信验证码</span></span><br><span class="line"><span class="comment"> * 实现：发送完成短信验证码后，需要将验证码保存到redis中</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> phone</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> ErrorResult <span class="title">sendCheckCode</span><span class="params">(String phone)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">   <span class="comment">//设置redis中的key</span></span><br><span class="line">   String redisKey = <span class="string">&quot;CHECK_CODE_&quot;</span> + phone;</span><br><span class="line"></span><br><span class="line">   <span class="comment">//先判断该手机号发送的验证码是否还未失效</span></span><br><span class="line">   <span class="keyword">if</span> (<span class="keyword">this</span>.redisTemplate.hasKey(redisKey)) &#123;</span><br><span class="line">      String msg = <span class="string">&quot;上一次发送的验证码还未失效！&quot;</span>;</span><br><span class="line">      <span class="keyword">return</span> ErrorResult.builder().errCode(<span class="string">&quot;000001&quot;</span>).errMessage(msg).build();</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">//获取验证码</span></span><br><span class="line">   <span class="comment">// String code = this.sendSms(phone);</span></span><br><span class="line">   String code = <span class="string">&quot;123456&quot;</span>;</span><br><span class="line"></span><br><span class="line">   <span class="comment">//如果验证码为空的话</span></span><br><span class="line">   <span class="keyword">if</span> (StringUtils.isEmpty(code)) &#123;</span><br><span class="line">      String msg = <span class="string">&quot;发送短信验证码失败！&quot;</span>;</span><br><span class="line">      <span class="keyword">return</span> ErrorResult.builder().errCode(<span class="string">&quot;000000&quot;</span>).errMessage(msg).build();</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">//短信发送成功，将验证码保存到redis中，有效期为5分钟</span></span><br><span class="line">   <span class="keyword">this</span>.redisTemplate.opsForValue().set(redisKey, code, Duration.ofMinutes(<span class="number">5</span>));</span><br><span class="line">   <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="进行用户的登录"><a href="#进行用户的登录" class="headerlink" title="进行用户的登录"></a>进行用户的登录</h4><ul>
+<li>1.用户获取到验证码之后，需要进行验证码的登录验证，此时需要获取到用户的手机号和验证码</li>
+<li>2.在获取到用户的手机号和验证码之后，需要在redis中取查找是否存在验证码，进行验证码的判断</li>
+<li>3.根据用户的手机号去redis中查找该手机号对应的验证码进行判断，如果用户输入的验证码与redis中存放的验证码不一致，验证码错误</li>
+<li>4.如果验证码判断通过，需要在redis中清除此验证码。接下来判断此用户是否是新用户</li>
+<li>5.通过用户的手机号去数据库中查找是否存在用户，如果为空则为新用户，新用户需要进行资料的完善；不为空则为老用户</li>
+<li>6.如果为新用户的话，设置其信息保存至数据库中，并标记为新用户，进行后续资料完善的判断依据</li>
+<li>7.在通过验证码的校验，Jwt会生成一个此次登录的token,进行单点登录的认证</li>
+<li>8.登录成功后，通过rocketMQ发送消息，将用户登录成功的消息发送给其他系统</li>
+</ul>
+<h5 id="controller-1"><a href="#controller-1" class="headerlink" title="controller"></a>controller</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 用户登录</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> param</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/loginVerification&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> ResponseEntity&lt;Object&gt; <span class="title">login</span><span class="params">(<span class="meta">@RequestBody</span> Map&lt;String, String&gt; param)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">try</span> &#123;</span><br><span class="line">      <span class="comment">//获取手机号和验证码</span></span><br><span class="line">      String phone = param.get(<span class="string">&quot;phone&quot;</span>);</span><br><span class="line">      String code = param.get(<span class="string">&quot;verificationCode&quot;</span>);</span><br><span class="line"></span><br><span class="line">      <span class="comment">//调用userService的login方法进行判断</span></span><br><span class="line">      String data = userService.login(phone, code);</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> (StringUtils.isNoneEmpty(data)) &#123;</span><br><span class="line">         <span class="comment">//登录成功</span></span><br><span class="line">         <span class="comment">//存放用于返回的结果对象</span></span><br><span class="line">         HashMap&lt;String, Object&gt; result = <span class="keyword">new</span> HashMap&lt;&gt;(<span class="number">2</span>);</span><br><span class="line">         <span class="comment">//切割data,获取属性值</span></span><br><span class="line">         String[] split = StringUtils.split(data, <span class="string">&#x27;|&#x27;</span>);</span><br><span class="line"></span><br><span class="line">         result.put(<span class="string">&quot;token&quot;</span>, split[<span class="number">0</span>]);</span><br><span class="line">         result.put(<span class="string">&quot;isNew&quot;</span>, Boolean.valueOf(split[<span class="number">1</span>]));</span><br><span class="line"></span><br><span class="line">         <span class="keyword">return</span> ResponseEntity.ok(result);</span><br><span class="line">      &#125;</span><br><span class="line">   &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">      e.printStackTrace();</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="comment">//发生异常构建errorResult对象</span></span><br><span class="line">   ErrorResult errorResult = ErrorResult.builder().errCode(<span class="string">&quot;000002&quot;</span>).errMessage(<span class="string">&quot;登录失败！&quot;</span>)</span><br><span class="line">         .build();</span><br><span class="line"></span><br><span class="line">   <span class="comment">//发生错误返回catch中构建的异常对象</span></span><br><span class="line">   <span class="keyword">return</span> ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorResult);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="Service"><a href="#Service" class="headerlink" title="Service"></a>Service</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 用户登录</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> phone 手机号</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> code 验证码</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">login</span><span class="params">(String phone, String code)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">   <span class="comment">//设置redis中的key</span></span><br><span class="line">   String redisKey = <span class="string">&quot;CHECK_CODE_&quot;</span> + phone;</span><br><span class="line"></span><br><span class="line">   <span class="comment">//默认为老用户</span></span><br><span class="line">   <span class="keyword">boolean</span> isNew = <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">   <span class="comment">//获取redis中存放的验证码</span></span><br><span class="line">   String redisData = redisTemplate.opsForValue().get(redisKey);</span><br><span class="line"></span><br><span class="line">   <span class="comment">//如果redis存放的验证码和用户输入的验证码不一致，返回null</span></span><br><span class="line">   <span class="keyword">if</span> (!StringUtils.equals(code, redisData)) &#123;</span><br><span class="line">      <span class="comment">//验证码错误，直接返回null</span></span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">//在校验成功验证码之后，需要废弃此验证码</span></span><br><span class="line">   redisTemplate.delete(redisKey);</span><br><span class="line"></span><br><span class="line">   <span class="comment">//根据phone查询user,判断是否数据库中是否存在此用户</span></span><br><span class="line">   QueryWrapper&lt;User&gt; queryWrapper = <span class="keyword">new</span> QueryWrapper&lt;&gt;();</span><br><span class="line">   queryWrapper.eq(<span class="string">&quot;mobile&quot;</span>, phone);</span><br><span class="line">   User user = userMapper.selectOne(queryWrapper);</span><br><span class="line"></span><br><span class="line">   <span class="comment">//如果user为null,则为新用户，进行注册,保存到数据库中</span></span><br><span class="line">   <span class="keyword">if</span> (<span class="keyword">null</span> == user) &#123;</span><br><span class="line">      user = <span class="keyword">new</span> User();</span><br><span class="line">      user.setMobile(phone);</span><br><span class="line">      <span class="comment">//使用md5对密码进行加密</span></span><br><span class="line">      user.setPassword(DigestUtils.md5Hex(<span class="string">&quot;123456&quot;</span>));</span><br><span class="line"></span><br><span class="line">      userMapper.insert(user);</span><br><span class="line">      <span class="comment">//新用户</span></span><br><span class="line">      isNew = <span class="keyword">true</span>;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   Map&lt;String, Object&gt; claims = <span class="keyword">new</span> HashMap&lt;String, Object&gt;();</span><br><span class="line">   claims.put(<span class="string">&quot;id&quot;</span>, user.getId());</span><br><span class="line">   <span class="comment">//生成token</span></span><br><span class="line">   String token = Jwts.builder()</span><br><span class="line">         .setClaims(claims) <span class="comment">//payload，存放数据的位置，不能放置敏感数据，如：密码等</span></span><br><span class="line">         .signWith(SignatureAlgorithm.HS256, secret) <span class="comment">//设置加密方法和加密盐</span></span><br><span class="line">         .setExpiration(<span class="keyword">new</span> DateTime().plusHours(<span class="number">12</span>).toDate()) <span class="comment">//设置过期时间，12小时后过期</span></span><br><span class="line">         .compact();</span><br><span class="line"></span><br><span class="line">   <span class="keyword">try</span> &#123;</span><br><span class="line">      <span class="comment">//发送用户登录成功的消息给其他系统</span></span><br><span class="line">      HashMap&lt;String, Object&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">      map.put(<span class="string">&quot;id&quot;</span>, user.getId());</span><br><span class="line">      map.put(<span class="string">&quot;date&quot;</span>, System.currentTimeMillis());</span><br><span class="line"></span><br><span class="line">      rocketMQTemplate.convertAndSend(<span class="string">&quot;tanhua-sso-login&quot;</span>, map);</span><br><span class="line">   &#125; <span class="keyword">catch</span> (MessagingException e) &#123;</span><br><span class="line">      log.error(<span class="string">&quot;发送消息失败！&quot;</span>, e);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">return</span> token + <span class="string">&quot;|&quot;</span> + isNew;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="完善新用户的个人信息"><a href="#完善新用户的个人信息" class="headerlink" title="完善新用户的个人信息"></a>完善新用户的个人信息</h4><ul>
+<li>1.首先获取到用户的信息和该次请求携带的token,进行token的校验</li>
+<li>2.token的校验，需要通过token解析器进行解析，成功解析返回一个map集合，获取map集合的key封装到用户对象中，通过获取到该用户的id在redis中查找是否存在此手机号，存在的话直接返回该用户对象，不存在的话去数据库中查询，查询到的话获取其手机号，并将其写入到redis中，并且需要设置其过期时间，过期时间需要和token保持一致，如果数据库中也不存在的话也就是token解析失败，token不合法或者已经过期，返回null.</li>
+<li>3.如果用户对象不为空的话，token校验通过，设置该用户的个人资料进行数据库的保存操作</li>
+</ul>
+<h5 id="controller-2"><a href="#controller-2" class="headerlink" title="controller"></a>controller</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 完善个人资料-基本信息</span></span><br><span class="line"><span class="comment">	 *</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> param</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="meta">@RequestMapping(&quot;/loginReginfo&quot;)</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> ResponseEntity&lt;Object&gt; <span class="title">loginReginfo</span><span class="params">(<span class="meta">@RequestBody</span> Map&lt;String, String&gt; param,</span></span></span><br><span class="line"><span class="params"><span class="function">			<span class="meta">@RequestHeader(&quot;Authorization&quot;)</span> String token)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			<span class="keyword">boolean</span> bool = userInfoService.saveUserInfo(param, token);</span><br><span class="line">			<span class="keyword">return</span> ResponseEntity.ok(<span class="keyword">null</span>);</span><br><span class="line"></span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="comment">//发生异常构建errorResult对象</span></span><br><span class="line">		ErrorResult errorResult = ErrorResult.builder().errCode(<span class="string">&quot;000001&quot;</span>).errMessage(<span class="string">&quot;保存用户信息失败！&quot;</span>)</span><br><span class="line">				.build();</span><br><span class="line">		<span class="comment">//发生错误返回catch中构建的异常对象</span></span><br><span class="line">		<span class="keyword">return</span> ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorResult);</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="service-1"><a href="#service-1" class="headerlink" title="service"></a>service</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 保存用户的基本信息</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> param</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> token</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">saveUserInfo</span><span class="params">(Map&lt;String, String&gt; param, String token)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">   <span class="comment">//校验token</span></span><br><span class="line">   User user = userService.queryUserByToken(token);</span><br><span class="line"></span><br><span class="line">   <span class="comment">//校验token未通过，返回false</span></span><br><span class="line">   <span class="keyword">if</span> (<span class="keyword">null</span> == user) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">//校验通过</span></span><br><span class="line">   UserInfo userInfo = <span class="keyword">new</span> UserInfo();</span><br><span class="line">   userInfo.setUserId(user.getId());</span><br><span class="line">   userInfo.setSex(StringUtils.equalsIgnoreCase(param.get(<span class="string">&quot;gender&quot;</span>), <span class="string">&quot;man&quot;</span>) ? GenderEnum.MAN</span><br><span class="line">         : GenderEnum.WOMAN);</span><br><span class="line">   userInfo.setNickName(param.get(<span class="string">&quot;nickname&quot;</span>));</span><br><span class="line">   userInfo.setBirthday(param.get(<span class="string">&quot;birthday&quot;</span>));</span><br><span class="line">   userInfo.setCity(param.get(<span class="string">&quot;city&quot;</span>));</span><br><span class="line">   <span class="keyword">return</span> userInfoMapper.insert(userInfo) == <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="校验token"><a href="#校验token" class="headerlink" title="校验token"></a>校验token</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 校验token</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> token</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> User <span class="title">queryUserByToken</span><span class="params">(String token)</span> </span>&#123;</span><br><span class="line">   <span class="keyword">try</span> &#123;</span><br><span class="line">      <span class="comment">// 通过token解析数据</span></span><br><span class="line">      Map&lt;String, Object&gt; body = Jwts.parser()</span><br><span class="line">            .setSigningKey(secret)</span><br><span class="line">            .parseClaimsJws(token)</span><br><span class="line">            .getBody();</span><br><span class="line">      User user = <span class="keyword">new</span> User();</span><br><span class="line">      user.setId(Long.valueOf(body.get(<span class="string">&quot;id&quot;</span>).toString()));</span><br><span class="line"></span><br><span class="line">      <span class="comment">//需要返回user对象中的mobile,需要查询数据库获取到mobile数据</span></span><br><span class="line">      <span class="comment">//如果每次都查询数据库，必然会导致性能问题，需要对用户的手机号进行缓存操作</span></span><br><span class="line">      <span class="comment">//数据缓存时，需要设置过期时间，过期时间要与token的时间一致</span></span><br><span class="line">      <span class="comment">//如果用户修改了手机号码，需要同步修改redis中的数据</span></span><br><span class="line">      String redisKey = <span class="string">&quot;TANHUA_USER_MOBILE_&quot;</span> + user.getId();</span><br><span class="line">      <span class="keyword">if</span> (redisTemplate.hasKey(redisKey)) &#123;</span><br><span class="line">         String mobile = redisTemplate.opsForValue().get(redisKey);</span><br><span class="line">         user.setMobile(mobile);</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">         <span class="comment">//查询数据库</span></span><br><span class="line">         User u = userMapper.selectById(user.getId());</span><br><span class="line">         user.setMobile(u.getMobile());</span><br><span class="line"></span><br><span class="line">         <span class="comment">//将手机号写入到redis中</span></span><br><span class="line">         <span class="comment">//在jwt中的过期时间的单位为：秒</span></span><br><span class="line">         <span class="keyword">long</span> timeout = Long.valueOf(body.get(<span class="string">&quot;exp&quot;</span>).toString()) * <span class="number">1000</span> - System</span><br><span class="line">               .currentTimeMillis();</span><br><span class="line">         redisTemplate.opsForValue()</span><br><span class="line">               .set(redisKey, u.getMobile(), timeout, TimeUnit.MILLISECONDS);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> user;</span><br><span class="line">   &#125; <span class="keyword">catch</span> (ExpiredJwtException e) &#123;</span><br><span class="line">      log.info(<span class="string">&quot;token已经过期！token = &quot;</span> + token);</span><br><span class="line">   &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">      log.error(<span class="string">&quot;token不合法！ token = &quot;</span> + token);</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="图片上传（用户的头像）"><a href="#图片上传（用户的头像）" class="headerlink" title="图片上传（用户的头像）"></a>图片上传（用户的头像）</h4><ul>
+<li>1.获取用户的头像MultipartFile file 和 token</li>
+<li>2.进行token的校验</li>
+<li>3.校验token通过后，需要检验图片是否为人像，如果不是人像则返回false</li>
+<li>4.检验图片是否为人像，需要调用虹软开发平台的图片人像检验功能，第三方工具</li>
+<li>5.如果是人像的话，将头像上传到阿里云oss进行图片的存储</li>
+<li>6.上传成功后需要将头像的链接更新到数据库中的用户表中进行存储</li>
+</ul>
+<h5 id="controller-3"><a href="#controller-3" class="headerlink" title="controller"></a>controller</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 完善个人资料-用户头像</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> param</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/loginReginfo/head&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> ResponseEntity&lt;Object&gt; <span class="title">loginRegLogo</span><span class="params">(<span class="meta">@RequestParam(&quot;headPhoto&quot;)</span> MultipartFile file,</span></span></span><br><span class="line"><span class="params"><span class="function">      <span class="meta">@RequestHeader(&quot;Authorization&quot;)</span> String token)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">try</span> &#123;</span><br><span class="line">      <span class="keyword">boolean</span> bool = userInfoService.saveUserLogo(file, token);</span><br><span class="line">      <span class="keyword">return</span> ResponseEntity.ok(<span class="keyword">null</span>);</span><br><span class="line">   &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">      e.printStackTrace();</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">//发生异常构建errorResult对象</span></span><br><span class="line">   ErrorResult errorResult = ErrorResult.builder().errCode(<span class="string">&quot;000001&quot;</span>).errMessage(<span class="string">&quot;保存用户头像失败！&quot;</span>)</span><br><span class="line">         .build();</span><br><span class="line"></span><br><span class="line">   <span class="comment">//发生错误返回catch中构建的异常对象</span></span><br><span class="line">   <span class="keyword">return</span> ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorResult);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="service-2"><a href="#service-2" class="headerlink" title="service"></a>service</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 用户的头像上传</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> file</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> token</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">saveUserLogo</span><span class="params">(MultipartFile file, String token)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">   <span class="comment">//校验token</span></span><br><span class="line">   User user = userService.queryUserByToken(token);</span><br><span class="line"></span><br><span class="line">   <span class="comment">//校验token未通过，返回false</span></span><br><span class="line">   <span class="keyword">if</span> (<span class="keyword">null</span> == user) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">try</span> &#123;</span><br><span class="line">      <span class="comment">//检验图片是否是人像，如果不是人像就返回false</span></span><br><span class="line">      <span class="keyword">boolean</span> b = faceEngineService.checkIsPortrait(file.getBytes());</span><br><span class="line">      <span class="keyword">if</span> (!b) &#123;</span><br><span class="line">         <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">      &#125;</span><br><span class="line">   &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">      e.printStackTrace();</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">//如果是人像，将头像上传到阿里云oss</span></span><br><span class="line">   PicUploadResult result = picUploadService.upload(file);</span><br><span class="line">   <span class="keyword">if</span> (StringUtils.isEmpty(result.getName())) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">//把头像保存到用户信息表中</span></span><br><span class="line">   UserInfo userInfo = <span class="keyword">new</span> UserInfo();</span><br><span class="line">   userInfo.setLogo(result.getName());</span><br><span class="line">   QueryWrapper&lt;UserInfo&gt; queryWrapper = <span class="keyword">new</span> QueryWrapper&lt;&gt;();</span><br><span class="line">   queryWrapper.eq(<span class="string">&quot;user_id&quot;</span>, user.getId());</span><br><span class="line"></span><br><span class="line">   <span class="keyword">return</span> userInfoMapper.update(userInfo, queryWrapper) == <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="检验头像是否为人像"><a href="#检验头像是否为人像" class="headerlink" title="检验头像是否为人像"></a>检验头像是否为人像</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.yishan.service;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.arcsoft.face.EngineConfiguration;</span><br><span class="line"><span class="keyword">import</span> com.arcsoft.face.FaceEngine;</span><br><span class="line"><span class="keyword">import</span> com.arcsoft.face.FaceInfo;</span><br><span class="line"><span class="keyword">import</span> com.arcsoft.face.FunctionConfiguration;</span><br><span class="line"><span class="keyword">import</span> com.arcsoft.face.enums.DetectMode;</span><br><span class="line"><span class="keyword">import</span> com.arcsoft.face.enums.DetectOrient;</span><br><span class="line"><span class="keyword">import</span> com.arcsoft.face.enums.ErrorInfo;</span><br><span class="line"><span class="keyword">import</span> com.arcsoft.face.enums.ImageFormat;</span><br><span class="line"><span class="keyword">import</span> com.arcsoft.face.toolkit.ImageFactory;</span><br><span class="line"><span class="keyword">import</span> com.arcsoft.face.toolkit.ImageInfo;</span><br><span class="line"><span class="keyword">import</span> org.slf4j.Logger;</span><br><span class="line"><span class="keyword">import</span> org.slf4j.LoggerFactory;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Value;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Service;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.annotation.PostConstruct;</span><br><span class="line"><span class="keyword">import</span> java.io.File;</span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FaceEngineService</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Logger LOGGER = LoggerFactory.getLogger(FaceEngineService.class);</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Value(&quot;$&#123;arcsoft.appid&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> String appid;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Value(&quot;$&#123;arcsoft.sdkKey&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> String sdkKey;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Value(&quot;$&#123;arcsoft.libPath&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> String libPath;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> FaceEngine faceEngine;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@PostConstruct</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 激活并且初始化引擎</span></span><br><span class="line">        FaceEngine faceEngine = <span class="keyword">new</span> FaceEngine(libPath);</span><br><span class="line">        <span class="keyword">int</span> activeCode = faceEngine.activeOnline(appid, sdkKey);</span><br><span class="line">        <span class="keyword">if</span> (activeCode != ErrorInfo.MOK.getValue() &amp;&amp; activeCode != ErrorInfo.MERR_ASF_ALREADY_ACTIVATED.getValue()) &#123;</span><br><span class="line">            LOGGER.error(<span class="string">&quot;引擎激活失败&quot;</span>);</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">&quot;引擎激活失败&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//引擎配置</span></span><br><span class="line">        EngineConfiguration engineConfiguration = <span class="keyword">new</span> EngineConfiguration();</span><br><span class="line">        <span class="comment">//IMAGE检测模式，用于处理单张的图像数据</span></span><br><span class="line">        engineConfiguration.setDetectMode(DetectMode.ASF_DETECT_MODE_IMAGE);</span><br><span class="line">        <span class="comment">//人脸检测角度，全角度</span></span><br><span class="line">        engineConfiguration.setDetectFaceOrientPriority(DetectOrient.ASF_OP_ALL_OUT);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//功能配置</span></span><br><span class="line">        FunctionConfiguration functionConfiguration = <span class="keyword">new</span> FunctionConfiguration();</span><br><span class="line">        functionConfiguration.setSupportAge(<span class="keyword">true</span>);</span><br><span class="line">        functionConfiguration.setSupportFace3dAngle(<span class="keyword">true</span>);</span><br><span class="line">        functionConfiguration.setSupportFaceDetect(<span class="keyword">true</span>);</span><br><span class="line">        functionConfiguration.setSupportFaceRecognition(<span class="keyword">true</span>);</span><br><span class="line">        functionConfiguration.setSupportGender(<span class="keyword">true</span>);</span><br><span class="line">        functionConfiguration.setSupportLiveness(<span class="keyword">true</span>);</span><br><span class="line">        functionConfiguration.setSupportIRLiveness(<span class="keyword">true</span>);</span><br><span class="line">        engineConfiguration.setFunctionConfiguration(functionConfiguration);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//初始化引擎</span></span><br><span class="line">        <span class="keyword">int</span> initCode = faceEngine.init(engineConfiguration);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (initCode != ErrorInfo.MOK.getValue()) &#123;</span><br><span class="line">            LOGGER.error(<span class="string">&quot;初始化引擎出错!&quot;</span>);</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">&quot;初始化引擎出错!&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">this</span>.faceEngine = faceEngine;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 检测图片是否为人像</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> imageInfo 图像对象</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> true:人像，false:非人像</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">checkIsPortrait</span><span class="params">(ImageInfo imageInfo)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 定义人脸列表</span></span><br><span class="line">        List&lt;FaceInfo&gt; faceInfoList = <span class="keyword">new</span> ArrayList&lt;FaceInfo&gt;();</span><br><span class="line">        faceEngine.detectFaces(imageInfo.getImageData(), imageInfo.getWidth(), imageInfo.getHeight(), ImageFormat.CP_PAF_BGR24, faceInfoList);</span><br><span class="line">        <span class="keyword">return</span> !faceInfoList.isEmpty();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">checkIsPortrait</span><span class="params">(<span class="keyword">byte</span>[] imageData)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.checkIsPortrait(ImageFactory.getRGBData(imageData));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">checkIsPortrait</span><span class="params">(File file)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.checkIsPortrait(ImageFactory.getRGBData(file));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="上传图片到阿里云oss"><a href="#上传图片到阿里云oss" class="headerlink" title="上传图片到阿里云oss"></a>上传图片到阿里云oss</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.yishan.service;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.aliyun.oss.OSSClient;</span><br><span class="line"><span class="keyword">import</span> com.yishan.config.AliyunConfig;</span><br><span class="line"><span class="keyword">import</span> com.yishan.vo.PicUploadResult;</span><br><span class="line"><span class="keyword">import</span> java.io.ByteArrayInputStream;</span><br><span class="line"><span class="keyword">import</span> org.apache.commons.lang3.RandomUtils;</span><br><span class="line"><span class="keyword">import</span> org.apache.commons.lang3.StringUtils;</span><br><span class="line"><span class="keyword">import</span> org.joda.time.DateTime;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Service;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.multipart.MultipartFile;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PicUploadService</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 允许上传的格式</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String[] IMAGE_TYPE = <span class="keyword">new</span> String[]&#123;<span class="string">&quot;.bmp&quot;</span>, <span class="string">&quot;.jpg&quot;</span>,</span><br><span class="line">            <span class="string">&quot;.jpeg&quot;</span>, <span class="string">&quot;.gif&quot;</span>, <span class="string">&quot;.png&quot;</span>&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> OSSClient ossClient;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> AliyunConfig aliyunConfig;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> PicUploadResult <span class="title">upload</span><span class="params">(MultipartFile uploadFile)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        PicUploadResult fileUploadResult = <span class="keyword">new</span> PicUploadResult();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//图片做校验，对后缀名</span></span><br><span class="line">        <span class="keyword">boolean</span> isLegal = <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//循环校验文件的后缀名，符合的返回true 执行标记</span></span><br><span class="line">        <span class="keyword">for</span> (String type : IMAGE_TYPE) &#123;</span><br><span class="line">            <span class="keyword">if</span> (StringUtils.endsWithIgnoreCase(uploadFile.getOriginalFilename(),</span><br><span class="line">                    type)) &#123;</span><br><span class="line">                isLegal = <span class="keyword">true</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//不符合后缀名的返回false,不进行上传</span></span><br><span class="line">        <span class="keyword">if</span> (!isLegal) &#123;</span><br><span class="line">            fileUploadResult.setStatus(<span class="string">&quot;error&quot;</span>);</span><br><span class="line">            <span class="keyword">return</span> fileUploadResult;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 文件新路径</span></span><br><span class="line">        String fileName = uploadFile.getOriginalFilename();</span><br><span class="line">        String filePath = getFilePath(fileName);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 上传到阿里云</span></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">// 目录结构：images/2018/12/29/xxxx.jpg</span></span><br><span class="line">            ossClient.putObject(aliyunConfig.getBucketName(), filePath, <span class="keyword">new</span></span><br><span class="line">                    ByteArrayInputStream(uploadFile.getBytes()));</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">            <span class="comment">//上传失败</span></span><br><span class="line">            fileUploadResult.setStatus(<span class="string">&quot;error&quot;</span>);</span><br><span class="line">            <span class="keyword">return</span> fileUploadResult;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 上传成功</span></span><br><span class="line">        fileUploadResult.setStatus(<span class="string">&quot;done&quot;</span>);</span><br><span class="line">        fileUploadResult.setName(<span class="keyword">this</span>.aliyunConfig.getUrlPrefix() + filePath);</span><br><span class="line">        fileUploadResult.setUid(String.valueOf(System.currentTimeMillis()));</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> fileUploadResult;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> String <span class="title">getFilePath</span><span class="params">(String sourceFileName)</span> </span>&#123;</span><br><span class="line">        DateTime dateTime = <span class="keyword">new</span> DateTime();</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;images/&quot;</span> + dateTime.toString(<span class="string">&quot;yyyy&quot;</span>)</span><br><span class="line">                + <span class="string">&quot;/&quot;</span> + dateTime.toString(<span class="string">&quot;MM&quot;</span>) + <span class="string">&quot;/&quot;</span></span><br><span class="line">                + dateTime.toString(<span class="string">&quot;dd&quot;</span>) + <span class="string">&quot;/&quot;</span> + System.currentTimeMillis() +</span><br><span class="line">                RandomUtils.nextInt(<span class="number">100</span>, <span class="number">9999</span>) + <span class="string">&quot;.&quot;</span> +</span><br><span class="line">                StringUtils.substringAfterLast(sourceFileName, <span class="string">&quot;.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      </div>
+      <div class="post-tags-categories">
+        
+        <div class="tags">
+          
+            <a href="/tags/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93/" class="">
+              项目总结
+            </a>
+          
+        </div>
+        
+      </div>
+      
+        <div class="copyright">
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+    <strong>author:  </strong>Ken Yang</a>
+    </li>
+    <li class="post-copyright-link">
+    <strong>link:  </strong>
+    <a href="/2021/04/25/登录注册/" target="_blank" title="登录注册">http://example.com/2021/04/25/登录注册/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>Copyright notice:   </strong>
+      All articles on this website, unless otherwise stated, adopt <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
+      reprint policy. If reproduced, please indicate source!
+    </li>
+  </ul>
+<div>
+      
+    </article>
+    <!-- 上一篇文章和下一篇文章 -->
+    
+      <!-- 文章详情页的上一页和下一页 -->
+<div class="post-nav">
+
+
+
+  
+  <div class="post-nav-prev post-nav-item">
+    <div class="post-nav-img" style="background-size: cover; 
+      background-position: center center;">
+      <img class="lazyload lazyload placeholder" src="/medias/1.jpg" class="lazyload placeholder" data-srcset="/medias/1.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="">
+    </div>
+    <a href="/2022/01/31/BIO%20NIO%20AIO/" class="post-nav-link">
+      <div class="title">
+        <i class="fas fa-angle-left"></i> Prev:
+        <div class="title-text"></div>
+      </div>
+      
+      <!-- <div class="content">
+        Java对BIO、NIO、AIO的支持
+Java BIO：同步并阻塞，服务器实现模式为一个连接一个线程，即客户端有连接请
+      </div> -->
+    </a>
+  </div>
+
+
+
+</div>
+
+    
+    
+
+    <!-- 打赏 -->
+    
+      <div id="appDonate" class="post-donate">
+  <div id="donate_board" class="donate_bar center" ref="donate">
+    <a id="btn_donate" class="btn_donate" href="javascript:;" title="打赏" @click="showDialogDrawer()"></a>
+  </div>
+  <transition name="fade">
+    <div 
+      class="donate-box-mask"
+      v-cloak 
+      v-show="visible"
+      @click="cancelDialogDrawer()"
+    >
+    </div>
+  </transition>
+  <transition name="bounce">
+    <div class="donate-box" v-cloak v-show="visible">
+      <div class="donate-box_close">
+        <i class="fas fa-times" aria-hidden="true" @click="cancelDialogDrawer" pointer></i>
+      </div>
+      <div class="donate-box_title">
+        <h4>
+          你的赏识是我前进的动力
+        </h4>
+      </div>
+      <div class="donate-box_tab">
+        <div class="Alipay" pointer :class="{'active': tabActive === 'Alipay'}" @click="changeTabActive('Alipay')">
+          支付宝
+        </div>
+        <div class="WeChatpay" pointer :class="{'active': tabActive === 'WeChatpay'}" @click="changeTabActive('WeChatpay')">
+          微信
+        </div>
+      </div>
+      <div class="donate-box_img">
+        <div class="AlipayImg" v-show="tabActive === 'Alipay'">
+          <img src="/medias/zfb.jpg" class="lazyload placeholder" data-srcset="/medias/zfb.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="支付宝打赏" />
+        </div> 
+        <div class="WeChatpayImg" v-show="tabActive === 'WeChatpay'">
+          <img src="/medias/wx.jpg" class="lazyload placeholder" data-srcset="/medias/wx.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="微信打赏" />
+        </div>
+      </div>
+    </div>
+  </transition>
+</div>
+
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appDonate',
+    data: {
+      visible: false,
+      tabActive: 'Alipay',
+      top: 0,
+    },
+    computed: {
+    },
+    mounted() {
+    },
+    methods: {
+      showDialogDrawer() {
+        this.visible = true;
+        // 防止页面滚动，只能让弹框滚动
+        // function getScroll() {
+        //   return {
+        //     left: window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0,
+        //     top: window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0
+        //   };
+        // }
+        this.top = $(document).scrollTop() // or getScroll().top
+        // console.log('aa', $('.main-content'));
+        body.style.cssText = 'overflow: hidden;';
+      },
+      cancelDialogDrawer() {
+        this.visible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      },
+      changeTabActive(name) {
+        this.tabActive = name;
+      }
+    },
+    created() {}
+  })
+</script>
+    
+
+    <!-- 分享 -->
+    
+      <!-- https://github.com/overtrue/share.js -->
+<!-- 文章详情页的分享 -->
+<div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+
+<script src="/js/shareJs/social-share.min.js"></script>
+</script>
+
+<style>
+  .social-share {
+    margin: 20px 0;
+  }
+</style>
+
+
+    
+    
+    <!-- 评论 -->
+    <!-- 评论 -->
+
+  <div id="myComment">
+    
+      <div id="gitment-container"></div>
+
+    
+  </div>
+
+<!-- comment script in themes\hexo-theme-bamboo\layout\_partial\scripts\index.ejs -->
+
+
+  </div>
+
+  <!-- 目录 -->
+  <!-- 文章详情页右侧目录 -->
+
+  <div class="toc-aside">
+    <div class="toc-main">
+      <div class="toc-aside-title">
+        <i class="fas fa-list-ul" aria-hidden="true"></i><span>catalog</span>
+        
+          <div class="toc-open-close">catalog</div>
+        
+      </div>
+      <div class="toc-content">
+        <div class="toc"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 手机端目录按钮 -->
+  <div id="toc-mobile-btn">
+    <i class="fas fa-list-ul" aria-hidden="true"></i>
+  </div>
+
+
+<script>
+  function closeToc(init) {
+    $(".toc-aside").css({'width': 0, 'padding': 0, 'transition': init ?  'noe' : 'width 0.3s' });
+    $(".toc-content").css({'width': 0});
+    $(".toc-aside-title span, .toc-aside-title i").css({'display': 'none'});
+    $(".main-content").css({'width': '75%', 'margin': '10px auto'});
+  };
+  function openToc() {
+    $(".main-content").css({'width': '65%', 'margin-right': '10px', 'margin-left': 'calc(35% - 350px)'});
+    $(".toc-aside").css({'width': '300px', 'padding': '0 10px', 'transition': 'width 0.3s'});
+    $(".toc-content").css({'width': '300px'});
+    $(".toc-aside-title span, .toc-aside-title i").css({'display': 'inline-block'});
+  }
+  function openBtnClickFn () {
+    let openOrCloseBtn = $('.toc-aside .toc-aside-title .toc-open-close');
+    let open = eval('' || 'true');
+    openOrCloseBtn.click(function() {
+      if (open) {
+        closeToc();
+        open = false;
+      } else {
+        openToc();
+        open = true;
+      }
+    });
+  };
+  openBtnClickFn();
+  initCloseTocWidth(true);
+
+  function initCloseTocWidth(init) {
+    if (window.innerWidth >= 992) {
+      let isClose = false;
+      isClose && closeToc(init)
+    }
+  }
+
+  document.addEventListener('pjax:complete', function () {
+    $(".toc-aside").css({'transition': 'no'});
+  })
+  document.addEventListener('pjax:complete', function () {
+    openBtnClickFn();
+  })
+  
+</script>
+
+  <!-- 图片放大 Wrap images with fancybox support -->
+  <script src="/js/wrapImage.js"></script>
+</div>
+
+<!-- 文章详情页背景图 -->
+<div id="appBgSwiper" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -2;"
+	:style="{'background-color': bgColor ? bgColor : 'transparent'}">
+	<transition-group tag="ul" :name="names">
+		<li v-for='(image,index) in img' :key='index' v-show="index === mark" class="bg-swiper-box">
+			<img :src="image" class="bg-swiper-img no-lazy">
+		</li>
+	</transition-group>
+</div>
+<script>
+	var vm = new Vue({
+		el: '#appBgSwiper',
+		data: {
+			names: '' || 'fade' || 'fade', // translate-fade fade
+			mark: 0,
+			img: [],
+			bgColor: '',
+			time: null
+		},
+		methods: {   //添加方法
+			change(i, m) {
+				if (i > m) {
+					// this.names = 'fade';
+				} else if (i < m) {
+					// this.names = 'fade';
+				} else {
+					return;
+				}
+				this.mark = i;
+			},
+			prev() {
+				// this.names = 'fade';
+				this.mark--;
+				if (this.mark === -1) {
+					this.mark = 3;
+					return
+				}
+			},
+			next() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			autoPlay() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			play() {
+				let bgImgDelay = '' || '180000'
+				let delay = parseInt(bgImgDelay) || 180000;
+				this.time = setInterval(this.autoPlay, delay);
+			},
+			enter() {
+				clearInterval(this.time);
+			},
+			leave() {
+				this.play();
+			}
+		},
+		created() {
+			this.play()
+		},
+		beforeDestroy() {
+			clearInterval(this.time);
+		},
+		mounted() {
+			let prop = '' || '';
+			let isImg = prop.includes('.bmp') || prop.includes('.jpg') || prop.includes('.png') || prop.includes('.tif') || prop.includes('.gif') || prop.includes('.pcx') || prop.includes('.tga') || prop.includes('.exif') || prop.includes('.fpx') || prop.includes('.psd') || prop.includes('.cdr') || prop.includes('.pcd') || prop.includes('.dxf') || prop.includes('.ufo') || prop.includes('.eps') || prop.includes('.ai') || prop.includes('.raw') || prop.includes('.WMF') || prop.includes('.webp') || prop.includes('.jpeg') || prop.includes('http://') || prop.includes('https://')
+			if (isImg) {
+				let img = prop.split(',');
+				let configRoot = '/'
+				let arrImg = [];
+				img.forEach(el => {
+					var Expression = /http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?/;
+					var objExp = new RegExp(Expression);
+
+					if (objExp.test(el)) {
+						// http or https
+						arrImg.push(el);
+					} else {
+						// 非http or https开头
+						// 本地文件
+						let firstStr = el.charAt(0);
+						if (firstStr == '/') {
+							el = el.substr(1); // 删除第一个字符 '/',因为 configRoot最后一个字符为 /
+						}
+						el = configRoot + el;
+						arrImg.push(el);
+					}
+				})
+				this.img = arrImg;
+			} else {
+				this.bgColor = prop;
+			}
+		}
+	})
+</script>
+
+<style>
+	.bg-swiper-box {
+		position: absolute;
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+
+	.bg-swiper-img {
+		object-fit: cover;
+		width: 100%;
+		height: 100%;
+	}
+</style>
+
+
+
+
+  <script>
+  function loadMermaid() {
+    if (document.getElementsByClassName('mermaid').length) {
+      if (window.mermaidJsLoad) mermaid.init()
+      else {
+        loadScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(() => {
+          window.mermaidJsLoad = true
+          mermaid.initialize({
+            theme: 'default',
+          })
+          if ('true') {
+            mermaid.init();
+          }
+        })
+      }
+    }
+  };
+  document.addEventListener("DOMContentLoaded", function () {
+    loadMermaid();
+  })
+
+  document.addEventListener('pjax:complete', function () {
+    loadMermaid();
+  })
+  
+</script>
+
+
+      </main>
+    </div>
+
+    <!-- 页脚 -->
+    
+  
+  <div class="footer bg-color">
+    <div class="footer-main">
+      
+        
+          <div class="link">
+            
+          </div>
+        
+      
+        
+          <div class="footer-copyright">
+            <p>Copyright © 2019 - 2020 <a target="_blank" rel="noopener" href="https://github.com/yuang01">yuang01</a> | Powered by <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">Hexo</a> | Theme <a target="_blank" rel="noopener" href="https://github.com/yuang01/theme">Bamboo</a> </p>
+
+          </div>
+        
+      
+        
+          
+            <!-- 不蒜子统计 -->
+            <!-- 不蒜子统计 -->
+<span id="busuanzi_container_site_pv">
+      <i class="fas fa-eye" aria-hidden="true"></i>Total visits：<span id="busuanzi_value_site_pv"></span> times
+</span>
+<span class="post-meta-divider">|</span>
+<span id="busuanzi_container_site_uv" style='display:none'>
+      <i class="fas fa-users" aria-hidden="true"></i>Number of visitors：<span id="busuanzi_value_site_uv"></span> people
+</span>
+
+          
+        
+      
+        
+          <div class="footer-custom">
+            
+          </div>
+        
+      
+    </div>
+  </div>
+
+
+
+    <!-- 渲染暗黑按钮 -->
+    
+      <div class="dark">
+  <div class="dark-content">
+    <i class="fas fa-moon" aria-hidden="true"></i>
+    <!-- <span>关灯</span> -->
+  </div>
+  
+</div>
+
+<script>
+  $(function() {
+    let isDark = JSON.parse(localStorage.getItem('dark'))  || JSON.parse('false');
+    if (isDark) {
+      $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fas fa-lightbulb" aria-hidden="true"></i>
+          </div>
+          `
+        );
+    }
+    $('.dark').click(function() {
+      if ($(document.body).is('.darkModel')) {
+        $(document.body).removeClass('darkModel');
+        localStorage.setItem('dark', false);
+        $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fas fa-moon" aria-hidden="true"></i>
+          </div>
+          `
+        );
+      } else {
+        $(document.body).addClass('darkModel');
+        localStorage.setItem('dark', true);
+        $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fas fa-lightbulb" aria-hidden="true"></i>
+          </div>
+          `
+        );
+      }
+    })
+  })
+</script>
+    
+    <!-- 渲染回到顶部按钮 -->
+    
+      <div class="goTop top-btn-color" pointer>
+  <i class="fas fa-arrow-up" aria-hidden="true"></i>
+</div>
+<script src="/js/goTop.js"></script>
+
+    
+    <!-- 渲染左下角音乐播放器 -->
+    
+      <link rel="stylesheet" href="/js/aplayer/APlayer@1.10.1.min.css">
+<style>
+.aplayer .aplayer-lrc p {
+  
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16px !important;
+}
+
+.aplayer .aplayer-lrc p.aplayer-lrc-current {
+  
+  font-size: 15px;
+  color: #42b983;
+}
+
+
+.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+  left: -66px !important;
+}
+
+.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+  left: 0px !important;
+}
+
+
+</style>
+<meting-js  
+  class=""
+  server="netease"
+  type="playlist"
+  id="8062553743"
+  fixed='true'
+  autoplay='false'
+  theme='#42b983'
+  loop='all'
+  order='random'
+  preload='auto'
+  volume='0.7'
+  list-folded='true'
+>
+</meting-js>
+
+<!-- <style>
+  #aplayer {
+    position: fixed;
+    left: 0;
+    bottom: 300px;
+  }
+</style> -->
+<script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+    
+
+    <!-- 图片放大 -->
+    
+      <script src="/js/fancybox/jquery.fancybox.min.js"></script>
+    
+
+    <!-- 百度解析 -->
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <!-- 背景彩带 -->
+    
+      <script type="text/javascript" size="100" alpha='0.4' zIndex="-1" src="/js/ribbon.min.js"></script>
+    
+
+    <script src="/js/utils/index.js"></script>
+    <script src="/js/app.js"></script>
+    
+    <!-- 文章目录所需js -->
+<link href="/js/tocbot/tocbot.css" rel="stylesheet">
+<script src="/js/tocbot/tocbot.min.js"></script>
+
+<script>
+  var headerEl = 'h2, h3, h4',  //headers 
+    content = '.post-detail',//文章容器
+    idArr = {};  //标题数组以确定是否增加索引id
+  //add #id
+  var option = {
+    // Where to render the table of contents.
+    tocSelector: '.toc',
+    // Where to grab the headings to build the table of contents.
+    contentSelector: content,
+    // Which headings to grab inside of the contentSelector element.
+    headingSelector: headerEl,
+    scrollSmooth: true,
+    scrollSmoothOffset: -80,
+    headingsOffset: -($(window).height() * 0.4 - 45),
+    positionFixedSelector: '.toc-main',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+    activeLinkClass: 'is-active-link',
+    // onClick: function (e) {},
+  }
+  if ($('.toc').length > 0) {
+
+    $(content).children(headerEl).each(function () {
+      //去除空格以及多余标点
+      var headerId = $(this).text().replace(/[\s|\~|`|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\_|\+|\=|\||\|\[|\]|\{|\}|\;|\:|\"|\'|\,|\<|\.|\>|\/|\?|\：|\，|\。]/g, '');
+
+      headerId = headerId.toLowerCase();
+      if (idArr[headerId]) {
+        //id已经存在
+        $(this).attr('id', headerId + '-' + idArr[headerId]);
+        idArr[headerId]++;
+      }
+      else {
+        //id未存在
+        idArr[headerId] = 1;
+        $(this).attr('id', headerId);
+      }
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+      tocbot.init(option);
+      mobileTocClick();
+    });
+
+  }
+
+  window.tocScrollFn = function () {
+    return bamboo.throttle(function () {
+      findHeadPosition();
+    }, 100)()
+  }
+  window.addEventListener('scroll', tocScrollFn);
+
+  const findHeadPosition = function (top) {
+    if ($('.toc-list').length <= 0) {
+      return false;
+    }
+    setTimeout(() => {  // or DOMContentLoaded 
+      autoScrollToc();
+    }, 0);
+  }
+
+  const autoScrollToc = function () {
+    const $activeItem = document.querySelector('.is-active-link');
+    const $cardToc = document.querySelector('.toc-content');
+    const activePosition = $activeItem.getBoundingClientRect().top
+    const sidebarScrollTop = $cardToc.scrollTop
+    if (activePosition > (document.documentElement.clientHeight - 100)) {
+      $cardToc.scrollTop = sidebarScrollTop + 150
+    }
+    if (activePosition < 100) {
+      $cardToc.scrollTop = sidebarScrollTop - 150
+    }
+  }
+
+  document.addEventListener('pjax:send', function () {
+    if ($('.toc').length) {
+      tocbot.destroy();
+    }
+  });
+
+  document.addEventListener('pjax:complete', function () {
+    if ($('.toc').length) {
+      tocbot.init(option);
+      mobileTocClick();
+    }
+  });
+  
+  // 手机端toc按钮点击出现目录
+  const mobileTocClick = function () {
+    const $cardTocLayout = document.getElementsByClassName('toc-aside')[0];
+    const $cardToc = $cardTocLayout.getElementsByClassName('toc-content')[0];
+    let right = '45px';
+    if (window.innerWidth >= 551 && window.innerWidth <= 992) {
+      right = '100px'
+    }
+    const mobileToc = {
+      open: () => {
+        $cardTocLayout.style.cssText = 'animation: toc-open .3s; opacity: 1; right: ' + right
+      },
+
+      close: () => {
+        $cardTocLayout.style.animation = 'toc-close .2s'
+        setTimeout(() => {
+          $cardTocLayout.style.cssText = "opacity:''; animation: ''; right: ''"
+        }, 100)
+      }
+    }
+    document.getElementById('toc-mobile-btn').addEventListener('click', () => {
+      if (window.getComputedStyle($cardTocLayout).getPropertyValue('opacity') === '0') mobileToc.open()
+      else mobileToc.close()
+    })
+
+    $cardToc.addEventListener('click', (e) => {
+      if (window.innerWidth < 992) { // 小于992px的时候
+        mobileToc.close()
+      }
+    })
+  }
+</script>
+
+<style>
+  .is-position-fixed {
+    position: sticky !important;
+    top: 74px;
+  }
+
+  .toc-main ul {
+    counter-reset: show-list;
+  }
+
+  .toc-main ul li::before {
+    content: counter(item)".";
+    display: block;
+    position: absolute;
+    left: 12px;
+    top: 0;
+  }
+</style> 
+
+<!-- 设置导航背景 -->
+<script>
+  let setHeaderClass = () => {
+    const headerMenuTransparent = true;
+    if (!headerMenuTransparent) { return; }
+    const nav = $('#navHeader');
+    const navTop = nav.outerHeight();
+    const winTop = $(window).scrollTop();
+    if(winTop > navTop) {
+      nav.addClass('header-bg-color');
+    }
+    else {
+      nav.removeClass('header-bg-color');
+    }
+  };
+
+  let scrollCollect = () => {
+    return bamboo.throttle(function (e) {
+      setHeaderClass();
+    }, 200)()
+  }
+
+  let initHeaderBg = () => {
+    setHeaderClass();
+  }
+
+  setHeaderClass();
+  window.addEventListener('scroll', scrollCollect);
+
+  document.addEventListener('pjax:send', function () {
+    window.removeEventListener('scroll', scrollCollect)
+  })
+  document.addEventListener('pjax:complete', function () {
+    window.addEventListener('scroll', scrollCollect);
+    setHeaderClass();
+  })
+</script> 
+
+<!-- 渲染issues标签里的内容 -->
+<script>
+  function loadIssuesJS() {
+    if ($(".post-detail").find(".issues-api").length == 0) {
+      return;
+    } 
+    loadScript('/js/issues/index.js');
+  };
+  $(function () {
+    loadIssuesJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof IssuesAPI == "undefined") {
+      loadIssuesJS();
+    }
+  })
+</script>
+
+<!-- 输入框打字特效 -->
+<!-- 输入框打字特效 -->
+
+  <script src="/js/activate-power-mode.js"></script>
+  <script>
+    POWERMODE.colorful = true;  // 打开随机颜色特效
+    POWERMODE.shake = false;    // 关闭输入框抖动
+    document.body.addEventListener('input', POWERMODE);//监听打字事件
+  </script>
+
+
+<!-- markdown代码一键复制功能 -->
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/v-plugs-ayu/lib/ayu.css">
+  <script src="https://cdn.jsdelivr.net/npm/v-plugs-ayu/lib/ayu.umd.min.js"></script>
+  <script src="/js/clipboard/clipboard.min.js"></script>
+  <div id="appCopy">
+  </div>
+  <script data-pjax>
+    var vm = new Vue({
+      el: '#appCopy',
+      data: {
+      },
+      computed: {
+      },
+      mounted() {
+        const that = this;
+        var copy = 'copy';
+        /* code */
+        var initCopyCode = function () {
+          var copyHtml = '';
+          copyHtml += '<button class="btn-copy" data-clipboard-snippet="" style="position:absolute;top:0;right:0;z-index:1;">';
+          copyHtml += '<i class="fas fa-copy"></i><span>' + copy + '</span>';
+          copyHtml += '</button>';
+          $(".post-detail pre").not('.gutter pre').wrap("<div class='codeBox' style='position:relative;width:100%;'></div>")
+          $(".post-detail pre").not('.gutter pre').before(copyHtml);
+          new ClipboardJS('.btn-copy', {
+            target: function (trigger) {
+              return trigger.nextElementSibling;
+            }
+          });
+        }
+        initCopyCode();
+        $('.btn-copy').unbind('click').bind('click', function () {
+          doSomething();
+        })
+        $(document).unbind('keypress').bind('keypress', function (e) {
+          if (e.ctrlKey && e.keyCode == 67) {
+            doSomething();
+          }
+        })
+
+        function doSomething() {
+          that.$notify({
+            title: "成功",
+            content: "代码已复制，请遵守相关授权协议。",
+            type: 'success'
+          })
+        }
+      },
+      methods: {
+      },
+      created() { }
+    })
+  </script>
+  
+
+<!-- 图片懒加载 -->
+<script defer src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.1.0/dist/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 0
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    lazyLoadInstance.update();
+  });
+  document.addEventListener('pjax:complete', function () {
+    lazyLoadInstance.update();
+  });
+</script>
+
+
+<!-- 卡片滚动动画 -->
+   
+
+<!-- 评论所需js -->
+
+  
+    <script type="text/javascript">
+  var utteranceCommon = {};
+
+  function check_utterance() {
+    let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+    if (isDark) {
+      utteranceCommon.Theme = 'github-dark';
+    } else {
+      utteranceCommon.Theme = 'github-light';
+    }
+
+    return document.getElementById("gitment-container");
+  }
+  comment_el = '#gitment-container';
+  load_utterance = function () {
+    if ($(comment_el).length) {
+      // 匿名函数，防止污染全局变量
+      const HEAD = check_utterance();
+
+      var utterances = document.createElement('script');
+      utterances.type = 'text/javascript';
+      utterances.async = true;
+      utterances.setAttribute('issue-term', 'pathname')
+      utterances.setAttribute('theme', utteranceCommon.Theme)
+      utterances.setAttribute('repo', '')
+      utterances.crossorigin = 'anonymous';
+      utterances.src = 'https://utteranc.es/client.js';
+      // content 是要插入评论的地方
+      document.getElementById('gitment-container').appendChild(utterances);
+
+    }
+  }
+
+  function dark_utterance() {
+    const HEAD = check_utterance();
+    if (!HEAD) return;
+    const message = {
+      type: 'set-theme',
+      theme: utteranceCommon.Theme
+    };
+    const utteranceIframe = document.querySelector('iframe');
+    utteranceIframe.contentWindow.postMessage(message, 'https://utteranc.es');
+  }
+
+  $(document).ready(load_utterance);
+  document.addEventListener('pjax:complete', function () {
+    load_utterance();
+  });
+
+  $('.dark').click(function () {
+    setTimeout(() => {
+      dark_utterance();
+    });
+  })
+
+</script>
+
+<style>
+  .utterances {
+    max-width: inherit !important;
+  }
+</style>
+  
+
+
+<!-- 鼠标点击特效 -->
+<!-- 爱心点击 -->
+
+  
+    <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 999; pointer-events: none;" ></canvas>
+    <script src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+    <script src="/js/cursor/explosion.min.js"></script>
+  
+
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" data-pjax></script>
+
+
+    <!-- pjax -->
+    
+
+<!-- pjax -->
+
+
+  <script src="/js/pjax@0.2.8/index.js"></script>
+  
+    <!-- 样式位于：source/css/_third-party/pjaxanimate.styl -->
+
+<div class="pjax-animate">
+  
+    <div class="loading-circle"><div id="loader-circle"></div></div>
+    <script>
+      window.ShowLoading = function() {
+        $(".loading-circle").css("display", "block");
+      };
+      window.HideLoading = function() {
+        $(".loading-circle").css("display", "none");
+      }
+    </script>
+  
+	<script>
+    document.addEventListener('pjax:complete', function () {
+      window.HideLoading();
+    })
+    document.addEventListener('pjax:send', function () {
+      window.ShowLoading();
+    })
+    document.addEventListener('pjax:error', function () {
+      window.HideLoading();
+    })
+	</script>
+</div>
+
+  
+
+  <script>
+    var pjax = new Pjax({
+      elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([no-pjax])',   // 拦截正常带链接的 a 标签
+      selectors: ["#pjax-container","title"],                                   // 根据实际需要确认重载区域
+      cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+      timeout: 5000
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = [""];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+
+    })
+    
+    document.addEventListener('pjax:complete', function () {
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+      window.location.href = e.triggerElement.href;
+    })
+    
+    // 刷新不从顶部开始
+    document.addEventListener("DOMContentLoaded", function () {
+      history.scrollRestoration = 'auto';
+    })
+  </script>
+
+
+
+  </body>
+</html>
