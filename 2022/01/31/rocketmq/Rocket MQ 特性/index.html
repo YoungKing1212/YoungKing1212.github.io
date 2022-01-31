@@ -11,7 +11,7 @@
   <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-  <title>杨先生の小破站</title>
+  <title>RocketMQ快速入门 | 杨先生の小破站</title>
 
   <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
   <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
@@ -408,14 +408,14 @@
 
 
 <div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
-  background-position: center center;position: relative;background-image:url('/medias/1.jpg')">
+  background-position: center center;position: relative;background-image:url('/medias/14.jpg')">
   <div class="post-detail-header-mask"></div>
   <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
   
   <div class="post-detail-header_info-box">
     <div class="title-box">
       <span class="title">
-        
+        RocketMQ快速入门
       </span>
     </div>
     
@@ -426,6 +426,15 @@
         </span>
       
 
+      
+        <span class="post-detail-header_categories">
+          <i class="iconfont iconbookmark1"></i> category：
+          
+            <a href="/categories/RocketMQ/" class="post-detail-header_category">
+              RocketMQ
+            </a>
+          
+        </span>
       
 
       
@@ -446,20 +455,77 @@
   <div class="main-content">
     <article class="post post-detail">
       <div class="post-content">
-        <h2 id="Springboot自动配置原理？"><a href="#Springboot自动配置原理？" class="headerlink" title="Springboot自动配置原理？"></a>Springboot自动配置原理？</h2><ul>
-<li>启动类上面@SpringBootApplication注解依赖于@EnableAutoConfiguration开启自动配置注解，@EnableAutoConfiguration注解底层依赖于@Import，而使用@Import导入的类都会被Spring加载到IOC容器中，</li>
+        <h1 id="Rocket-MQ-特性"><a href="#Rocket-MQ-特性" class="headerlink" title="Rocket MQ 特性"></a>Rocket MQ 特性</h1><h2 id="1-订阅与发布"><a href="#1-订阅与发布" class="headerlink" title="1 订阅与发布"></a>1 订阅与发布</h2><p>消息的发布是指某个生产者向某个Topic发送消息；消息的订阅是指某个消费者关注了某个Topic中带有某些tag的消息，进而从该Topic消费数据。</p>
+<h2 id="2-消息顺序"><a href="#2-消息顺序" class="headerlink" title="2 消息顺序"></a>2 消息顺序</h2><p>消息有序指的是一类消息消费时，能按照发送的顺序来消费。例如：一个订单产生了三条消息分别是订单创建、订单付款、订单完成。消费时要按照这个顺序消费才有意义，但是同时订单之间是可以并行消费的。RocketMQ可以严格的保证消息有序。</p>
+<p>顺序消息分为全局顺序消息与分区顺序消息，全局顺序是指某个Topic下的所有消息都要保证顺序；部分顺序消息只要保证每一组消息被顺序消费即可。</p>
+<ul>
+<li>全局顺序 对于指定的一个Topic，所有消息按照严格的先入先出（FIFO）顺序进行发布和消费。适用场景：性能要求不高，所有的消息严格按照FIFO原则进行消息发布和消费的场景。</li>
+<li>分区顺序 对于指定的一个Topic，所有消息根据sharding key进行区块分区。同一个分区内的消息按照严格的FIFO顺序进行发布和消费。Sharding key是顺序消息中用来区分不同分区的关键字段，和普通消息的Key是完全不同的概念。适用场景： 性能要求高，以sharding key作为分区字段，在同一个区块中严格的按照FIFO原则进行消息发布和消费的场景。</li>
 </ul>
-<h3 id="Import注解有三种使用方式"><a href="#Import注解有三种使用方式" class="headerlink" title="@Import注解有三种使用方式"></a>@Import注解有三种使用方式</h3><ul>
-<li>1.直接加载Bean或配置类(配置类所有的Bean都会注入到IOC容器中)。</li>
-<li>2.导入ImportSelector接口的实现类，该实现类会重写父类的selectImports方法，返回一个String[]里面装的是要加载的配置类的全路径。</li>
-<li>3.ImportBeanDefinitionRegistrar方式。</li>
-<li>而SpringBoot@EnableAutoConfiguration注解依赖的这个@Import底层用的是第二种使用方式，他去加载一个AutoConfigurationImportSelector配置实现类，顶层实现了ImportSelector接口，这个配置类里就重写了selectImports<br>方法，这个方法底层调用的是封装好的protected List<String> getCandidateConfigurations(AnnotationMetadata metadata,<br>AnnotationAttributes attributes){}方法，加载的是autoconfigre包里META-INF目录下/spring.factories这个配置文件，这个配置文件里定义了大量配置类的全路径，比如RedisAutoConfiguration、RabbitAutoConfiguration等等，当SpringBoot启动时，会自动加载这些配置类来初始化成对应的Bean,而不是所有的Bean都会被初始化，因为这些配置类上都是依赖于@ConditionalOnClass注解，也就是判断你当前环境中是否有对应配置类的字节码文件，也就是看有没有对应的依赖，只有满足Conditional条件的Bean才会被初始化。所以我们一般在使用reids、junit等的时候，导入其依赖，启动springboot后就能@Autowired对象了。</li>
+<h2 id="3-消息过滤"><a href="#3-消息过滤" class="headerlink" title="3 消息过滤"></a>3 消息过滤</h2><p>RocketMQ的消费者可以根据Tag进行消息过滤，也支持自定义属性过滤。消息过滤目前是在Broker端实现的，优点是减少了对于Consumer无用消息的网络传输，缺点是增加了Broker的负担、而且实现相对复杂。</p>
+<h2 id="4-消息可靠性"><a href="#4-消息可靠性" class="headerlink" title="4 消息可靠性"></a>4 消息可靠性</h2><p>Rocket MQ支持消息的高可靠，影响消息可靠性的几种情况：</p>
+<ol>
+<li>Broker非正常关闭</li>
+<li>Broker异常Crash</li>
+<li>OS Crash</li>
+<li>机器掉电，但是能立即恢复供电情况</li>
+<li>机器无法开机（可能是CPU、主板、内存等关键设备损坏）</li>
+<li>磁盘设备损坏</li>
+</ol>
+<p>1)、2)、3）、4）四种情况都属于硬件资源可立即恢复的情况，Rocket MQ在这四种情况下能保证消息不丢失，或者丢失少量数据（依赖刷盘方式是同步还是异步）。</p>
+<p>5）、6）属于单点故障，且无法恢复，一旦发生，在此单点上的消息全部丢失。Rocket MQ在这两种情况下，通过异步复制。可保证99%的消息不丢失，但是仍然会有极少量的消息可能丢失。通过同步双写技术可以完全避免单点，同步双写势必会影响性能，适合对消息可靠性要求极高的场景，例如与Money相关的应用。</p>
+<h2 id="5-至少一次"><a href="#5-至少一次" class="headerlink" title="5 至少一次"></a>5 至少一次</h2><p>至少一次（At  least Once）指每个消息必须投递一次。Consumer先Pull消息到本地，消费完成后，才向服务器返回ack，如果没有消费一定不会ack消息，所以Rocket MQ可以很好的支持此特性。</p>
+<h2 id="6-回溯消费"><a href="#6-回溯消费" class="headerlink" title="6 回溯消费"></a>6 回溯消费</h2><p>回溯消费是指Consumer已经消费成功的消息，由于业务上需求需要重新消费，要支持此功能，Broker在向Consumer投递成功消息后，消息仍然需要保留。并且重新消费一般是按照时间维度，例如由于Consumer系统故障，恢复后需要重新消费1小时前的数据，那么Broker要提供一种机制，可以按照时间维度来回退消费进度。Rocket MQ支持按照时间回溯消费，时间维度精确到毫秒。</p>
+<h2 id="7-事务消息"><a href="#7-事务消息" class="headerlink" title="7 事务消息"></a>7 事务消息</h2><p>Rocket MQ 事务消息（Transactional Message）是指应用本地事务和发送消息操作可以被定义到全局事务中，要么同时成功，要么同时失败。Rocket MQ的事务消息提供类似的X /OPEN XA的分布式事务功能，通过事务消息能达到分布式事务的最终一致。</p>
+<h2 id="8-定时消息"><a href="#8-定时消息" class="headerlink" title="8 定时消息"></a>8 定时消息</h2><p>定时消息（延迟队列）是指消息发送到broker后，不会立即被消费，等待特定时间投递给真正的topic。 broker有配置项messageDelayLevel，默认值为“1s 5s 10s 30s 1m 2m 3m 4m 5m 6m 7m 8m 9m 10m 20m 30m 1h 2h”，18个level。可以配置自定义messageDelayLevel。注意，messageDelayLevel是broker的属性，不属于某个topic。发消息时，设置delayLevel等级即可：msg.setDelayLevel(level)。level有以下三种情况：</p>
+<ul>
+<li>level == 0，消息为非延迟消息</li>
+<li>1&lt;=level&lt;=maxLevel，消息延迟特定时间，例如level==1，延迟1s</li>
+<li>level &gt; maxLevel，则level== maxLevel，例如level==20，延迟2h</li>
 </ul>
-<h3 id="Springboot自定义Starter？"><a href="#Springboot自定义Starter？" class="headerlink" title="Springboot自定义Starter？"></a>Springboot自定义Starter？</h3><p>@ConfigurationProperties中prefix=”aaa”,将配置文件中aaa开头的属性映射到该类的字段中。<br>@ConditionalOnMissingBean(name=”jedis”)，如果用户自己定义了名字叫jedis的Bean，那就用用户的，如果用户没有定义，就用我们提供的(name=”jedis”)的Bean。</p>
-<p>(1) 创建Starter项目。(2)定义Properties类，让实体类和配置文件相绑定。实体类使用@ConfigurationProperties(prefix=”aaa”)注解，再在自动配置类上加@EnableConfigurationProperties(Properties.class)让Properties类被Spring所识别。(3)定义自动配置类，通过@Bean注解声明要注入的bean对象，并且可以通过参数的方式注入Properties实体类的属性值，他的值就是配置文件里设置的属性值。(4)编写META-INF/spring.factories文件加载自动配置类。</p>
+<p>定时消息会暂存在名为SCHEDULE_TOPIC_XXXX的topic中，并根据delayTimeLevel存入特定的queue，queueId = delayTimeLevel-1 ,即一个queue中只存在相同延迟时间的消息，保证具有相同发送延迟的消息能够顺序消费。broker会调度消费SCHEDULE_TOPIC_XXXX，将消息写入真实的topic。</p>
+<p>需要注意的是，定时消息会在第一次写入和调度写入真实topic时都会计数，因此发送数量、tps都会变高。</p>
+<h2 id="9-消息重试"><a href="#9-消息重试" class="headerlink" title="9 消息重试"></a>9 消息重试</h2><p>Consumer消费消息失败后，要提供一种重试机制，令消息再消费一次。Consumer消息失败通常可以认为有以下几种情况：</p>
+<ul>
+<li>由于消息本身的原因，例如反序列化失败，消息数据本身无法处理（例如话费充值，当前消息的手机号被注销，无法充值）等。这种错误通常需要跳过这条消息，再消费其他消息，而这条失败的消息即使立刻重试消费，99%也不成功，所以最好提供一种定时重试机制，即过十秒后再重试。</li>
+<li>由于依赖的下游应用服务不可用，例如db连接不可用，外系统网络不可达等。遇到这种错误，即使跳过当前失败的消息，消费其他消息同样也会报错。这种情况建议应用sleep 30s，再消费下一条消息，这样可以减轻Broker重试消息的压力。</li>
+</ul>
+<p>RocketMQ会为每个消费者组都设置一个Topic名称为“%RETRY%+consumerGroup”的重试队列（这里需要注意的是，这个Topic的重试队列是针对于消费者组，而不是针对每个Topic设置的），用于暂时保存因为各种异常而导致Consumer端无法消费的消息。考虑到异常恢复起来需要一些时间，会为重试队列设置多个重试级别，每个重试级别都有与之对应的重新投递延时，重试次数越多投递延时越大。RocketMQ对于重试消息的重试队列“%RETRY%+consumerGroup”的重试队列中。</p>
+<h2 id="10-消息重投"><a href="#10-消息重投" class="headerlink" title="10 消息重投"></a>10 消息重投</h2><p>生产者在发送消息时，同步消息失败会重投，异步消息有重试，one way没有任何保证。消息重投保证消息尽可能发送成功、不丢失，但可能造成消息重复，消息重复在Rocket MQ中是无法避免的问题。消息重复在一般情况下不会发生，当出现消息量大、网络波动，消息重复就会是大概率事件。另外，生产者主动重发、Consumer负载变化也会导致重复消息。如下方法可以设置消息重复策略：</p>
+<ul>
+<li>retryTimesWhenSendFailed: 同步发送失败重投次数，默认为2，因此生产者最多尝试发送retryTimesWhenSendFailed + 1 次。不会选择上次失败的broker，尝试向其他broker发送，最大程度保证消息不丢失。超过重投次数，抛出异常，由客户端保证消息不丢。当出现RemotingException、MQClientException和部分MQBrokerException时会重投。</li>
+<li>retryTimeWhenSendAsyncFailed：异步发送失败重试次数，异步重试不会选择其他Broker，仅在同一个broker做重试，不保证消息不丢。</li>
+<li>retryAnotherBrokerWhenNotStoreOK:消息刷盘（主或备）超时或slave不可用（返回状态非SEND_OK），是否尝试发送到其他Broker，默认false。十分重要消息可以开启。</li>
+</ul>
+<h2 id="11-流量控制"><a href="#11-流量控制" class="headerlink" title="11 流量控制"></a>11 流量控制</h2><p>生产者流控， 因为broker处理能力达到瓶颈；消费者流控，因为消费能力达到瓶颈。</p>
+<p>生产者流控：</p>
+<ul>
+<li>commitLog文件被锁时间超过osPageCacheBusyTimeOutMills时，参数默认为1000ms，返回流控</li>
+<li>如果开启transientStorePoolEnable == true，且broker为异步刷盘的主机，且transientStorePool中资源不足，拒绝当前send请求，返回流控。</li>
+<li>broker每隔10ms检查send请求队列头部请求的等待时间，如果超过waitTimeMillsInSendQueue，默认200ms，拒绝当前send请求，返回流控。</li>
+<li>broker通过拒绝send请求方式实现流量控制。</li>
+</ul>
+<p>注意，生产者流控，不会尝试消息重投。</p>
+<p>消费者流控：</p>
+<ul>
+<li>消费者本地缓存消息数超过pullThresholdForQueue时，默认1000</li>
+<li>消费者本地缓存消息大小超过pullThresholdSizeForQueue时，默认为100MB</li>
+<li>消费者本地缓存消息超过消息跨度超过consumerConcurrentlyMaxSpan时，默认为2000</li>
+</ul>
+<p>消费者流控的结果是降低拉取频率。</p>
+<h2 id="12-死信队列"><a href="#12-死信队列" class="headerlink" title="12 死信队列"></a>12 死信队列</h2><p>死信队列用于处理无法被正常消费的消息。当一条消息初次消费失败，消息队列会自动进行消息重试；达到最大重试次数后，若消费依然失败，则表明消费者在正常情况下无法正确地消费该消息，此时，消息队列不会立刻将消息丢弃，而是将其发送到该消费者对应的特殊队列中。</p>
+<p>RocketMQ将这种正常情况下无法被消费的消息称为死信消息（Dead-Letter Message），将存储死信消息的特殊队列称为死信队列（Dead-Letter Queue）。在RocketMQ 中，可以通过使用console控制台对死信队列中的消息进行重发来使得消费者实例再次被消费。</p>
 
       </div>
       <div class="post-tags-categories">
+        
+        <div class="tags">
+          
+            <a href="/tags/RocketMQ/" class="">
+              RocketMQ
+            </a>
+          
+        </div>
         
       </div>
       
@@ -470,7 +536,7 @@
     </li>
     <li class="post-copyright-link">
     <strong>link:  </strong>
-    <a href="/2022/01/31/springboot面试必问/" target="_blank" title="">http://example.com/2022/01/31/springboot面试必问/</a>
+    <a href="/2022/01/31/rocketmq/Rocket MQ 特性/" target="_blank" title="RocketMQ快速入门">http://example.com/2022/01/31/rocketmq/Rocket MQ 特性/</a>
     </li>
     <li class="post-copyright-license">
       <strong>Copyright notice:   </strong>
@@ -492,16 +558,16 @@
   <div class="post-nav-prev post-nav-item">
     <div class="post-nav-img" style="background-size: cover; 
       background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="/medias/1.jpg" class="lazyload placeholder" data-srcset="/medias/1.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="">
+      <img class="lazyload lazyload placeholder" src="/medias/4.jpg" class="lazyload placeholder" data-srcset="/medias/4.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="">
     </div>
-    <a href="/2022/01/31/Vuex%E6%A0%B8%E5%BF%83/" class="post-nav-link">
+    <a href="/2022/01/31/rocketmq/RocketMq%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/" class="post-nav-link">
       <div class="title">
         <i class="fas fa-angle-left"></i> Prev:
-        <div class="title-text"></div>
+        <div class="title-text">Rocket基本概念</div>
       </div>
       
       <!-- <div class="content">
-        Vuex 核心概念State单一状态树Vuex 使用单一状态树——是的，用一个对象就包含了全部的应用层级状态。至此它便作
+        RocketMq的基本概念1 消息模型（Message Model）RocketMQ 主要是由Producer、Brok
       </div> -->
     </a>
   </div>
@@ -512,18 +578,17 @@
   <div class="post-nav-next post-nav-item">
     <div class="post-nav-img" style="background-size: cover; 
       background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="/medias/9.jpg" class="lazyload placeholder" data-srcset="/medias/9.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" src="" alt="">
+      <img class="lazyload lazyload placeholder" src="/medias/8.jpg" class="lazyload placeholder" data-srcset="/medias/8.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" src="" alt="">
     </div>
-    <a href="/2022/01/31/Java%20%E5%B9%B6%E5%8F%91%20-%20%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80/" class="post-nav-link">
+    <a href="/2022/01/31/rocketmq/mq%E6%B6%88%E8%B4%B9%E8%80%85%E6%B3%A8%E5%86%8C/" class="post-nav-link">
       <div class="title">
         Next: <i class="fas fa-angle-right"></i>
-        <div class="title-text">Java并发-理论基础</div>
+        <div class="title-text">消费者相关</div>
       </div>
       <!-- <div class="content">
-        
-在学习这篇文章之前，我们可以先去考虑这些问题，带着这些问题去理解多线程和并发的解决方案。
-
-多线程的出现是要解决什么问
+        消费者注册(RocketMqApplication)
+检查是否需要启用消费者
+检查配置参数是否为空（IP地址，Consu
       </div> -->
     </a>
   </div>

@@ -11,7 +11,7 @@
   <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-  <title>杨先生の小破站</title>
+  <title>XXL-JOB快速入门 | 杨先生の小破站</title>
 
   <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
   <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
@@ -408,14 +408,14 @@
 
 
 <div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
-  background-position: center center;position: relative;background-image:url('/medias/1.jpg')">
+  background-position: center center;position: relative;background-image:url('/medias/7.jpg')">
   <div class="post-detail-header-mask"></div>
   <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
   
   <div class="post-detail-header_info-box">
     <div class="title-box">
       <span class="title">
-        
+        XXL-JOB快速入门
       </span>
     </div>
     
@@ -426,6 +426,15 @@
         </span>
       
 
+      
+        <span class="post-detail-header_categories">
+          <i class="iconfont iconbookmark1"></i> category：
+          
+            <a href="/categories/%E7%AC%AC%E4%B8%89%E6%96%B9%E6%8F%92%E4%BB%B6/" class="post-detail-header_category">
+              第三方插件
+            </a>
+          
+        </span>
       
 
       
@@ -446,19 +455,228 @@
   <div class="main-content">
     <article class="post post-detail">
       <div class="post-content">
-        <h2 id="Java对BIO、NIO、AIO的支持"><a href="#Java对BIO、NIO、AIO的支持" class="headerlink" title="Java对BIO、NIO、AIO的支持"></a>Java对BIO、NIO、AIO的支持</h2><ul>
-<li>Java BIO：同步并阻塞，服务器实现模式为一个连接一个线程，即客户端有连接请求时服务器端就需要启动一个线程进行处理，如果这个连接不做任何事情会造成不必要的线程开销，可以通过线程池机制改善。</li>
-<li>Java NIO：同步非阻塞，服务器实现模式为一个请求一个线程，即客户端发送的连接请求都会注册到多路复用器上，多路复用器轮询到连接有I／O请求时才启动一个线程进行处理。</li>
-<li>Java AIO(NIO.2): 异步非阻塞,服务器实现模式为一个有效请求一个线程,客户端的I/O请求都是由OS先完成了再通知服务器应用去启动线程进行处理.</li>
+        <p>[TOC]</p>
+<h1 id="XXL-JOB"><a href="#XXL-JOB" class="headerlink" title="XXL-JOB"></a>XXL-JOB</h1><h2 id="一、快速入门"><a href="#一、快速入门" class="headerlink" title="一、快速入门"></a>一、快速入门</h2><h4 id="源码仓库地址"><a href="#源码仓库地址" class="headerlink" title="源码仓库地址"></a>源码仓库地址</h4><table>
+<thead>
+<tr>
+<th align="left">源码仓库地址</th>
+<th align="left">Release Download</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://github.com/xuxueli/xxl-job">https://github.com/xuxueli/xxl-job</a></td>
+<td align="left"><a target="_blank" rel="noopener" href="https://github.com/xuxueli/xxl-job/releases">Download</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://gitee.com/xuxueli0323/xxl-job">http://gitee.com/xuxueli0323/xxl-job</a></td>
+<td align="left"><a target="_blank" rel="noopener" href="http://gitee.com/xuxueli0323/xxl-job/releases">Download</a></td>
+</tr>
+</tbody></table>
+<h3 id="1-1-初始化“调度数据库”"><a href="#1-1-初始化“调度数据库”" class="headerlink" title="1.1 初始化“调度数据库”"></a>1.1 初始化“调度数据库”</h3><p>“调度数据库初始化SQL脚本”，位置为：</p>
+<blockquote>
+<p><code>/xxl-job/doc/db/tables_xxl_job.sql</code></p>
+</blockquote>
+<p>调度中心支持集群部署，集群情况下各节点务必连接同一个mysql实例；</p>
+<p>如果mysql做主从，调度中心集群节点务必强制走主库</p>
+<h3 id="1-2-编译源码"><a href="#1-2-编译源码" class="headerlink" title="1.2 编译源码"></a>1.2 编译源码</h3><p>源码结构如下:</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">xxl-job-admin：调度中心</span></span><br><span class="line"><span class="attr">xxl-job-core：公共依赖</span></span><br><span class="line"><span class="attr">xxl-job-executor-samples：执行器Sample示例（选择合适的版本执行器，可直接使用，也可以参考其并将现有项目改造成执行器）</span></span><br><span class="line">    <span class="attr">：xxl-job-executor-sample-springboot：Springboot版本，通过Springboot管理执行器，推荐这种方式；</span></span><br><span class="line">    <span class="attr">：xxl-job-executor-sample-frameless：无框架版本；</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="1-3-配置调度中心"><a href="#1-3-配置调度中心" class="headerlink" title="1.3 配置调度中心"></a>1.3 配置调度中心</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">调度中心项目: xxl-job-admin</span><br><span class="line">作用：统一管理任务调度平台上调度任务，负责触发调度执行，并且提供任务管理平台</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="步骤一：调度中心配置"><a href="#步骤一：调度中心配置" class="headerlink" title="步骤一：调度中心配置:"></a>步骤一：调度中心配置:</h4><p>调度中心配置内容说明：</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">### 调度中心JDBC链接：链接地址请保持和 1.1章节 所创建的调度数据库的地址一致</span></span><br><span class="line"><span class="meta">spring.datasource.url</span>=<span class="string">jdbc:mysql://127.0.0.1:3306/xxl_job?useUnicode=true&amp;characterEncoding=UTF-8&amp;autoReconnect=true&amp;serverTimezone=Asia/Shanghai</span></span><br><span class="line"><span class="meta">spring.datasource.username</span>=<span class="string">root</span></span><br><span class="line"><span class="meta">spring.datasource.password</span>=<span class="string">root_pwd</span></span><br><span class="line"><span class="meta">spring.datasource.driver-class-name</span>=<span class="string">com.mysql.jdbc.Driver</span></span><br><span class="line"><span class="comment">### 报警邮箱</span></span><br><span class="line"><span class="meta">spring.mail.host</span>=<span class="string">smtp.qq.com</span></span><br><span class="line"><span class="meta">spring.mail.port</span>=<span class="string">25</span></span><br><span class="line"><span class="meta">spring.mail.username</span>=<span class="string">xxx@qq.com</span></span><br><span class="line"><span class="meta">spring.mail.password</span>=<span class="string">xxx</span></span><br><span class="line"><span class="meta">spring.mail.properties.mail.smtp.auth</span>=<span class="string">true</span></span><br><span class="line"><span class="meta">spring.mail.properties.mail.smtp.starttls.enable</span>=<span class="string">true</span></span><br><span class="line"><span class="meta">spring.mail.properties.mail.smtp.starttls.required</span>=<span class="string">true</span></span><br><span class="line"><span class="meta">spring.mail.properties.mail.smtp.socketFactory.class</span>=<span class="string">javax.net.ssl.SSLSocketFactory</span></span><br><span class="line"><span class="comment">### 调度中心通讯TOKEN [选填]：非空时启用；</span></span><br><span class="line"><span class="meta">xxl.job.accessToken</span>=<span class="string"></span></span><br><span class="line"><span class="comment">### 调度中心国际化配置 [必填]： 默认为 &quot;zh_CN&quot;/中文简体, 可选范围为 &quot;zh_CN&quot;/中文简体, &quot;zh_TC&quot;/中文繁体 and &quot;en&quot;/英文；</span></span><br><span class="line"><span class="meta">xxl.job.i18n</span>=<span class="string">zh_CN</span></span><br><span class="line"><span class="comment">## 调度线程池最大线程配置【必填】</span></span><br><span class="line"><span class="meta">xxl.job.triggerpool.fast.max</span>=<span class="string">200</span></span><br><span class="line"><span class="meta">xxl.job.triggerpool.slow.max</span>=<span class="string">100</span></span><br><span class="line"><span class="comment">### 调度中心日志表数据保存天数 [必填]：过期日志自动清理；限制大于等于7时生效，否则, 如-1，关闭自动清理功能；</span></span><br><span class="line"><span class="meta">xxl.job.logretentiondays</span>=<span class="string">30</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="步骤二：-部署项目"><a href="#步骤二：-部署项目" class="headerlink" title="步骤二： 部署项目"></a>步骤二： 部署项目</h4><p>如果已经正确进行上述配置，可将项目编译打包部署。</p>
+<p>调度中心访问地址: <a target="_blank" rel="noopener" href="http://localhost:8080/xxl-job-admin">http://localhost:8080/xxl-job-admin</a> (该地址执行器将会使用到，作为回调地址)</p>
+<p>默认登录账号”<code>admin/123456</code>“, 登录后运行界面如下图所示。</p>
+<p><img src="https://raw.githubusercontent.com/YoungKing1212/blog_image/master/img/image-20220126112437922.png" class="lazyload placeholder" data-srcset="https://raw.githubusercontent.com/YoungKing1212/blog_image/master/img/image-20220126112437922.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220126112437922"></p>
+<p>至此“调度中心”项目已经部署成功。</p>
+<h4 id="步骤三：-调度中心集群（可选）："><a href="#步骤三：-调度中心集群（可选）：" class="headerlink" title="步骤三： 调度中心集群（可选）："></a>步骤三： 调度中心集群（可选）：</h4><p>调度中心支持集群部署，提升调度系统容灾和可用性。</p>
+<p>调度中心集群部署时，几点要求和建议：</p>
+<ul>
+<li>DB配置保持一致</li>
+<li>集群机器时钟保持一致（单机集群忽视）</li>
+<li>建议：推荐通过nginx为调度中心集群做负载均衡，分配域名。调度中心访问、执行器回调配置、调用API服务等操作均通过该域名进行。</li>
 </ul>
-<h2 id="BIO、NIO、AIO适用场景分析"><a href="#BIO、NIO、AIO适用场景分析" class="headerlink" title="BIO、NIO、AIO适用场景分析"></a>BIO、NIO、AIO适用场景分析</h2><ul>
-<li>BIO方式适用于连接数目比较小且固定的架构,这种方式对服务器资源要求比较高,并发局限于应用中.</li>
-<li>NIO方式适用于连接数目多且连接时间比较短(轻操作) 的架构.</li>
-<li>AIO方式适用于连接数目多且连接时间较长（重操作）的架构．</li>
+<h4 id="其他：-Docker镜像方式搭建调度中心"><a href="#其他：-Docker镜像方式搭建调度中心" class="headerlink" title="其他： Docker镜像方式搭建调度中心:"></a>其他： Docker镜像方式搭建调度中心:</h4><p>下载镜像:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Docker地址：https://hub.docker.com/r/xuxueli/xxl-job-admin/     (建议指定版本号)</span></span><br><span class="line">docker pull xuxueli/xxl-job-admin</span><br></pre></td></tr></table></figure>
+
+
+
+<p>创建容器并运行：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">docker run -p <span class="number">8080</span>:<span class="number">8080</span> -v /tmp:/data/applogs --name xxl-job-admin -d xuxueli/xxl-job-admin:&#123;指定版本&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 如需自定义 mysql 等配置，可通过 &quot;-e PARAMS&quot; 指定，参数格式 PARAMS=&quot;--key=value  --key2=value2&quot; ；</span></span><br><span class="line"><span class="comment">* 配置项参考文件：/xxl-job/xxl-job-admin/src/main/resources/application.properties</span></span><br><span class="line"><span class="comment">* 如需自定义 JVM内存参数 等配置，可通过 &quot;-e JAVA_OPTS&quot; 指定，参数格式 JAVA_OPTS=&quot;-Xmx512m&quot; ；</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">docker run -e PARAMS=<span class="string">&quot;--spring.datasource.url=jdbc:mysql://127.0.0.1:3306/xxl_job?useUnicode=true&amp;characterEncoding=UTF-8&amp;autoReconnect=true&amp;serverTimezone=Asia/Shanghai&quot;</span> -p <span class="number">8080</span>:<span class="number">8080</span> -v /tmp:/data/applogs --name xxl-job-admin  -d xuxueli/xxl-job-admin:&#123;指定版本&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="1-4-配置部署“执行器项目”"><a href="#1-4-配置部署“执行器项目”" class="headerlink" title="1.4 配置部署“执行器项目”"></a>1.4 配置部署“执行器项目”</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">“执行器”项目：xxl-job-executor-sample-springboot (提供多种版本执行器供选择，现以 springboot 版本为例，可直接使用，也可以参考其并将现有项目改造成执行器)</span><br><span class="line">作用：负责接收“调度中心”的调度并执行；可直接部署执行器，也可以将执行器集成到现有业务项目中。</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="步骤一：-maven依赖"><a href="#步骤一：-maven依赖" class="headerlink" title="步骤一： maven依赖"></a>步骤一： maven依赖</h4><p>确认pom文件中引入了”xxl-job-core”的maven依赖；</p>
+<h4 id="步骤二：-执行器配置"><a href="#步骤二：-执行器配置" class="headerlink" title="步骤二： 执行器配置"></a>步骤二： 执行器配置</h4><p>执行器配置，配置内容说明:</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">### 调度中心部署跟地址 [选填]：如调度中心集群部署存在多个地址则用逗号分隔。执行器将会使用该地址进行&quot;执行器心跳注册&quot;和&quot;任务结果回调&quot;；为空则关闭自动注册；</span></span><br><span class="line"><span class="meta">xxl.job.admin.addresses</span>=<span class="string">http://127.0.0.1:8080/xxl-job-admin</span></span><br><span class="line"><span class="comment">### 执行器通讯TOKEN [选填]：非空时启用；</span></span><br><span class="line"><span class="meta">xxl.job.accessToken</span>=<span class="string"></span></span><br><span class="line"><span class="comment">### 执行器AppName [选填]：执行器心跳注册分组依据；为空则关闭自动注册</span></span><br><span class="line"><span class="meta">xxl.job.executor.appname</span>=<span class="string">xxl-job-executor-sample</span></span><br><span class="line"><span class="comment">### 执行器注册 [选填]：优先使用该配置作为注册地址，为空时使用内嵌服务 ”IP:PORT“ 作为注册地址。从而更灵活的支持容器类型执行器动态IP和动态映射端口问题。</span></span><br><span class="line"><span class="meta">xxl.job.executor.address</span>=<span class="string"></span></span><br><span class="line"><span class="comment">### 执行器IP [选填]：默认为空表示自动获取IP，多网卡时可手动设置指定IP，该IP不会绑定Host仅作为通讯实用；地址信息用于 &quot;执行器注册&quot; 和 &quot;调度中心请求并触发任务&quot;；</span></span><br><span class="line"><span class="meta">xxl.job.executor.ip</span>=<span class="string"></span></span><br><span class="line"><span class="comment">### 执行器端口号 [选填]：小于等于0则自动获取；默认端口为9999，单机部署多个执行器时，注意要配置不同执行器端口；</span></span><br><span class="line"><span class="meta">xxl.job.executor.port</span>=<span class="string">9999</span></span><br><span class="line"><span class="comment">### 执行器运行日志文件存储磁盘路径 [选填] ：需要对该路径拥有读写权限；为空则使用默认路径；</span></span><br><span class="line"><span class="meta">xxl.job.executor.logpath</span>=<span class="string">/data/applogs/xxl-job/jobhandler</span></span><br><span class="line"><span class="comment">### 执行器日志文件保存天数 [选填] ： 过期日志自动清理, 限制值大于等于3时生效; 否则, 如-1, 关闭自动清理功能；</span></span><br><span class="line"><span class="meta">xxl.job.executor.logretentiondays</span>=<span class="string">30</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="步骤三：-执行器组件配置"><a href="#步骤三：-执行器组件配置" class="headerlink" title="步骤三： 执行器组件配置"></a>步骤三： 执行器组件配置</h4><p>执行器组件，配置文件地址：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/xxl-job/xxl-job-executor-samples/xxl-job-executor-sample-springboot/src/main/java/com/xxl/job/executor/core/config/XxlJobConfig.java</span><br></pre></td></tr></table></figure>
+
+<p>执行器组件，配置内容说明：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> XxlJobSpringExecutor <span class="title">xxlJobExecutor</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       logger.info(<span class="string">&quot;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; xxl-job config init.&quot;</span>);</span><br><span class="line">       XxlJobSpringExecutor xxlJobSpringExecutor = <span class="keyword">new</span> XxlJobSpringExecutor();</span><br><span class="line">       <span class="comment">// 配置调度中心地址</span></span><br><span class="line">       xxlJobSpringExecutor.setAdminAddresses(adminAddresses);</span><br><span class="line">       <span class="comment">// 执行器APPName</span></span><br><span class="line">       xxlJobSpringExecutor.setAppname(appname);</span><br><span class="line">       <span class="comment">// 执行器注册地址</span></span><br><span class="line">       xxlJobSpringExecutor.setAddress(address);</span><br><span class="line">       <span class="comment">// 执行器IP</span></span><br><span class="line">       xxlJobSpringExecutor.setIp(ip);</span><br><span class="line">       <span class="comment">// 执行器端口号</span></span><br><span class="line">       xxlJobSpringExecutor.setPort(port);</span><br><span class="line">       <span class="comment">// 执行器通讯Token</span></span><br><span class="line">       xxlJobSpringExecutor.setAccessToken(accessToken);</span><br><span class="line">       <span class="comment">// 执行器运行日志文件存储路径</span></span><br><span class="line">       xxlJobSpringExecutor.setLogPath(logPath);</span><br><span class="line">       <span class="comment">// 执行器日志文件保存天数</span></span><br><span class="line">       xxlJobSpringExecutor.setLogRetentionDays(logRetentionDays);</span><br><span class="line"></span><br><span class="line">       <span class="keyword">return</span> xxlJobSpringExecutor;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="步骤四：-部署执行器项目"><a href="#步骤四：-部署执行器项目" class="headerlink" title="步骤四： 部署执行器项目"></a>步骤四： 部署执行器项目</h4><p>如果已经正确进行上述配置，可将执行器项目编译打包部署，系统提供多种执行器Sample示例项目，选择其中一个即可，各自的部署方式如下。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">xxl-job-executor-sample-springboot：项目编译打包成springboot类型的可执行JAR包，命令启动即可；</span><br><span class="line">xxl-job-executor-sample-frameless：项目编译打包成JAR包，命令启动即可；</span><br></pre></td></tr></table></figure>
+
+<p>至此“执行器”项目已经部署结束。</p>
+<h4 id="步骤五：执行器集群（可选）"><a href="#步骤五：执行器集群（可选）" class="headerlink" title="步骤五：执行器集群（可选）"></a>步骤五：执行器集群（可选）</h4><p>执行器支持集群部署，提升调度系统可用性，同时提升任务处理能力。</p>
+<p>执行器集群部署时，几点要求和建议：</p>
+<ul>
+<li>执行器回调地址（<code>xxl.job.admin.addresses</code>）需要保持一致；执行器根据该配置进行执行器自动注册等操作。</li>
+<li>同一个执行器集群内APPName（<code>xxl.job.executor.appname</code>）需要保持一致；调度中心根据该配置动态发现不同集群的在线执行器列表。</li>
+</ul>
+<h2 id="二、任务详解"><a href="#二、任务详解" class="headerlink" title="二、任务详解"></a>二、任务详解</h2><p>配置属性详细说明：</p>
+<blockquote>
+<p>基础配置：</p>
+<ul>
+<li><p>执行器：任务的绑定的执行器，任务被触发调度时将会自动发现注册成功的执行器，实现任务自动发现功能；另外一方面也可以方便的进行任务分组。每个任务必须绑定一个执行器，可在“执行器管理”进行设置；</p>
+</li>
+<li><p>任务描述：任务的描述信息，便于任务管理</p>
+</li>
+<li><p>负责人：任务的负责人</p>
+</li>
+<li><p>报警邮件：任务调度失败时邮件通知的邮箱地址，支持配置多邮箱地址，配置多个邮箱地址时用逗号分隔</p>
+</li>
+</ul>
+<p>触发配置:</p>
+<ul>
+<li>调度类型：<ul>
+<li>无：该类型不会主动触发调度</li>
+<li>CRON：该类型将会通过CRON，触发任务调度</li>
+<li>固定速度：该类型将会以固定速度，触发任务调度；按照固定的间隔时间，周期性触发</li>
+<li>固定延迟：该类型将会以固定延迟，触发任务调度；按照固定的延迟时间，从上次调度结束后开始计算延迟时间，到达延迟时间后触发下一次调度</li>
+</ul>
+</li>
+<li>CRON：触发任务执行的CRON表达式</li>
+<li>固定速度：固件速度的时间间隔，单位为秒</li>
+<li>固定延迟：固件延迟的时间间隔，单位为秒</li>
+</ul>
+<p>任务配置：</p>
+<ul>
+<li>运行模式：<ul>
+<li>BEAN模式：任务以JobHandler方式维护在执行器端；需要结合 “JobHandler” 属性匹配执行器中任务；</li>
+<li>GLUE模式(Java)：任务以源码方式维护在调度中心；该模式的任务实际上是一段继承自IJobHandler的Java类代码并 “groovy” 源码方式维护，它在执行器项目中运行，可使用@Resource/@Autowire注入执行器里中的其他服务；</li>
+<li>GLUE模式(Shell)：任务以源码方式维护在调度中心；该模式的任务实际上是一段 “shell” 脚本</li>
+<li>GLUE模式(Python)：任务以源码方式维护在调度中心；该模式的任务实际上是一段 “python” 脚本；</li>
+<li>GLUE模式(PHP)：任务以源码方式维护在调度中心；该模式的任务实际上是一段 “php” 脚本</li>
+<li>GLUE模式(NodeJS)：任务以源码方式维护在调度中心；该模式的任务实际上是一段 “nodejs” 脚本</li>
+<li> GLUE模式(PowerShell)：任务以源码方式维护在调度中心；该模式的任务实际上是一段 “PowerShell” 脚本</li>
+</ul>
+</li>
+<li>JobHandler: 运行模式为“BEAN模式”时生效，对应执行器中新开发的JobHandler类“@JobHandler”注解自定义的value值</li>
+<li>执行参数：任务执行所需的参数</li>
+</ul>
+<p>高级配置：</p>
+<ul>
+<li>路由策略：当执行器集群部署时，提供丰富的路由策略，包括；<ul>
+<li><code>FIRST（第一个）：固定选择第一个机器；</code></li>
+<li><code>LAST（最后一个）：固定选择最后一个机器；</code></li>
+<li><code>        ROUND（轮询）：；</code></li>
+<li><code>        RANDOM（随机）：随机选择在线的机器；</code></li>
+<li><code>        CONSISTENT_HASH（一致性HASH）：每个任务按照Hash算法固定选择某一台机器，且所有任务均匀散列在不同机器上。</code></li>
+<li><code>        LEAST_FREQUENTLY_USED（最不经常使用）：使用频率最低的机器优先被选举；</code></li>
+<li><code>        LEAST_RECENTLY_USED（最近最久未使用）：最久未使用的机器优先被选举；</code></li>
+<li><code>        FAILOVER（故障转移）：按照顺序依次进行心跳检测，第一个心跳检测成功的机器选定为目标执行器并发起调度；</code></li>
+<li><code>        BUSYOVER（忙碌转移）：按照顺序依次进行空闲检测，第一个空闲检测成功的机器选定为目标执行器并发起调度；</code></li>
+<li><code>        SHARDING_BROADCAST(分片广播)：广播触发对应集群中所有机器执行一次任务，同时系统自动传递分片参数；可根据分片参数开发分片任务；</code></li>
+</ul>
+</li>
+<li>子任务：每个任务都拥有一个唯一的任务ID（任务ID可以从任务列表获取），当本任务执行结束并且执行成功时，将会触发子任务ID所对应的任务的一次主动调度。</li>
+<li>调度过期策略：<ul>
+<li>忽略：调度过期后，忽略过期的任务，从当前时间开始重新计算下次触发时间</li>
+<li>立即执行一次：调度过期后，立即执行一次，并从当前时间开始重新计算下次触发时间</li>
+</ul>
+</li>
+<li>阻塞处理策略：调度过于密集执行器来不及处理时的处理策略<ul>
+<li>单机串行（默认）：调度请求进入单机执行器后，调度请求进入FIFO队列，并以串行方式运行</li>
+<li>丢弃后续调度：调度请求进入单机执行器后，发现执行器存在运行的调度任务，本次请求将会被丢弃并标记为失败</li>
+<li>覆盖之前调度：调度请求进入单机执行器后，发现执行器存在运行的调度任务，将会终止运行中的调度任务并清空队列，然后运行本地调度任务</li>
+</ul>
+</li>
+<li>任务超时时间：支持自定义任务超时时间，任务运行超时将会主动中断任务</li>
+<li>失败重试次数：支持自定义任务失败重试次数，当任务失败时，将按照预设的失败重试次数主动进行重试</li>
+</ul>
+</blockquote>
+<h3 id="2-1-BEAN模式（类模式）"><a href="#2-1-BEAN模式（类模式）" class="headerlink" title="2.1 BEAN模式（类模式）"></a>2.1 BEAN模式（类模式）</h3><p>Bean模式任务，支持基于类的开发方式，每个任务对应一个Java类。</p>
+<p><strong>优点：</strong>不限制项目环境，兼容性好。即使是无框架项目，如main方法直接启动的项目也可以提供支持，可以参考示例项目“xxl-job-executor-sample-frameless”;</p>
+<p><strong>缺点：</strong></p>
+<ul>
+<li>每个任务需要占用一个Java类，造成类的浪费</li>
+<li>不支持自动扫描任务并注入到执行器容器，需要手动注入</li>
+</ul>
+<h4 id="步骤一：执行器项目中，开发Job类"><a href="#步骤一：执行器项目中，开发Job类" class="headerlink" title="步骤一：执行器项目中，开发Job类"></a>步骤一：执行器项目中，开发Job类</h4><blockquote>
+<ol>
+<li><p>开发一个继承自”com.xxl.job.core.handler.IJobHandler”的JobHandler类，实现其中任务方法</p>
+</li>
+<li><p>手动通过如下方式注入到执行器容器</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">XxlJobExecutor.registJobHandler(<span class="string">&quot;demoJobHandeler&quot;</span>, <span class="keyword">new</span> DemoJobHandler())</span><br></pre></td></tr></table></figure></li>
+</ol>
+</blockquote>
+<h4 id="步骤二-调度中心，新建调度任务"><a href="#步骤二-调度中心，新建调度任务" class="headerlink" title="步骤二:  调度中心，新建调度任务"></a>步骤二:  调度中心，新建调度任务</h4><h3 id="2-2-BEAN模式（方法模式）"><a href="#2-2-BEAN模式（方法模式）" class="headerlink" title="2.2 BEAN模式（方法模式）"></a>2.2 BEAN模式（方法模式）</h3><p>Bean模式任务。支持基于方法的开发方式，每个任务对应一个方法。</p>
+<p><strong>优点</strong>：每个任务只需要开发一个方法，并添加“@XxlJob”注解即可，更加方便、快速。</p>
+<p><strong>缺点：</strong>要求Spring容器环境。</p>
+<blockquote>
+<p>基于方法开发的任务，底层会生成JobHandler代理，和基于类的方式一样，任务也会以JobHandler的形式存在于执行器任务容器中。</p>
+</blockquote>
+<h4 id="步骤一：-执行器项目中，开发Job方法"><a href="#步骤一：-执行器项目中，开发Job方法" class="headerlink" title="步骤一： 执行器项目中，开发Job方法:"></a>步骤一： 执行器项目中，开发Job方法:</h4><blockquote>
+<ol>
+<li>任务开发：在Spring Bean实例中，开发Job方法；</li>
+<li>注解配置：为Job方法添加注解“@XxlJob(value=”自定义jobhandler名称”，init=”JobHandler初始化方法”, destory=”JobHandler销毁方法”)”，注解value值对应的是调度中心新建任务的JobHandler属性的值</li>
+<li>执行日志：需要通过”XxlJobHelper.log”打印执行日志</li>
+<li>任务结果: 默认任务结果为“成功”状态，不需要主动设置；如有诉求，比如设置任务结果为失败，可以通过”XxlJobHelper.handlerFail/handlerSuccess”自主设置任务结果</li>
+</ol>
+</blockquote>
+<blockquote>
+<p>// 可参考Sample示例执行器中的”com.xxl.job.executor.service.jobhandler.TestXxlJob”, 如下:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 测试任务示例</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@throws</span> Exception</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@XxlJob(value = &quot;testXxlJobHandler&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testXxlJob</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    XxlJobHelper.handleFail(<span class="string">&quot;好像失败了呢，快去看看哪里出问题了吧&quot;</span>);</span><br><span class="line">    XxlJobHelper.handleSuccess(<span class="string">&quot;呀，一不小心就执行成功啦!&quot;</span>);</span><br><span class="line">    logger.info(<span class="string">&quot;textJobHandler-------Start JOB---------&quot;</span>);</span><br><span class="line">    XxlJobHelper.log(<span class="string">&quot;欢迎来到TestXxlJobHandler执行方法，程序正在执行......&quot;</span>);</span><br><span class="line">    TimeUnit.SECONDS.sleep(<span class="number">2</span>);</span><br><span class="line">    XxlJobHelper.log(<span class="string">&quot;欢迎来到TestXxlJobHandler执行方法，程序执行完成......&quot;</span>);</span><br><span class="line">    logger.info(<span class="string">&quot;textJobHandler-------Finsh JOB---------&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h4 id="步骤二：-调度中心，新建调度任务"><a href="#步骤二：-调度中心，新建调度任务" class="headerlink" title="步骤二： 调度中心，新建调度任务"></a>步骤二： 调度中心，新建调度任务</h4><p>参考上文“配置属性详细说明”对新建的任务进行参数配置，运行模式中选中”Bean模式”，JobHandler属性填写任务详解“@XxlJob”中定义的值；</p>
+<p><img src="https://raw.githubusercontent.com/YoungKing1212/blog_image/master/img/image-20220126162415053.png" class="lazyload placeholder" data-srcset="https://raw.githubusercontent.com/YoungKing1212/blog_image/master/img/image-20220126162415053.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220126162415053"></p>
+<p><strong>原生内置Bean模式任务</strong></p>
+<p>为方便用户参考与快速使用，示例执行器内原生提供多个Bean模式任务Handler，可以直接配置使用，如下：</p>
+<ul>
+<li><p>demoJobHandler:简单示例任务，任务内部模拟耗时任务逻辑，用户可在线体验Rolling Log等功能</p>
+</li>
+<li><p>shardingJobHandler: 分片示例任务，任务内部模拟处理分片参数，可参考熟悉分片任务</p>
+</li>
+<li><p>httpJobHandler：通用HTTP任务Handler；业务方只需要提供HTTP链接等信息即可，不限制语言、平台。示例任务入参如下：</p>
+<blockquote>
+<p> url: <a target="_blank" rel="noopener" href="http://www.xxx.com/">http://www.xxx.com</a></p>
+<p> method: get 或 post</p>
+<p> data: post-data</p>
+</blockquote>
+</li>
+<li><p>commandJobHandler: 通用命令行任务Handler；业务方只需要提供命令行即可；如“pwd”命令；</p>
+</li>
 </ul>
 
       </div>
       <div class="post-tags-categories">
+        
+        <div class="tags">
+          
+            <a href="/tags/XXL-JOB/" class="">
+              XXL-JOB
+            </a>
+          
+        </div>
         
       </div>
       
@@ -469,7 +687,7 @@
     </li>
     <li class="post-copyright-link">
     <strong>link:  </strong>
-    <a href="/2022/01/31/BIO NIO AIO/" target="_blank" title="">http://example.com/2022/01/31/BIO NIO AIO/</a>
+    <a href="/2022/01/31/第三方插件或接口/XXL-JOB/" target="_blank" title="XXL-JOB快速入门">http://example.com/2022/01/31/第三方插件或接口/XXL-JOB/</a>
     </li>
     <li class="post-copyright-license">
       <strong>Copyright notice:   </strong>
@@ -491,19 +709,18 @@
   <div class="post-nav-prev post-nav-item">
     <div class="post-nav-img" style="background-size: cover; 
       background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="/medias/9.jpg" class="lazyload placeholder" data-srcset="/medias/9.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="">
+      <img class="lazyload lazyload placeholder" src="/medias/8.jpg" class="lazyload placeholder" data-srcset="/medias/8.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="">
     </div>
-    <a href="/2022/01/31/Java%20%E5%B9%B6%E5%8F%91%20-%20%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80/" class="post-nav-link">
+    <a href="/2022/01/31/rocketmq/mq%E6%B6%88%E8%B4%B9%E8%80%85%E6%B3%A8%E5%86%8C/" class="post-nav-link">
       <div class="title">
         <i class="fas fa-angle-left"></i> Prev:
-        <div class="title-text">Java并发-理论基础</div>
+        <div class="title-text">消费者相关</div>
       </div>
       
       <!-- <div class="content">
-        
-在学习这篇文章之前，我们可以先去考虑这些问题，带着这些问题去理解多线程和并发的解决方案。
-
-多线程的出现是要解决什么问
+        消费者注册(RocketMqApplication)
+检查是否需要启用消费者
+检查配置参数是否为空（IP地址，Consu
       </div> -->
     </a>
   </div>
@@ -514,18 +731,15 @@
   <div class="post-nav-next post-nav-item">
     <div class="post-nav-img" style="background-size: cover; 
       background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="/medias/8.jpg" class="lazyload placeholder" data-srcset="/medias/8.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" src="" alt="">
+      <img class="lazyload lazyload placeholder" src="/medias/10.jpg" class="lazyload placeholder" data-srcset="/medias/10.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" src="" alt="">
     </div>
-    <a href="/2021/04/25/%E7%99%BB%E5%BD%95%E6%B3%A8%E5%86%8C/" class="post-nav-link">
+    <a href="/2022/01/31/%E7%AC%AC%E4%B8%89%E6%96%B9%E6%8F%92%E4%BB%B6%E6%88%96%E6%8E%A5%E5%8F%A3/Kaptcha%20%E9%AA%8C%E8%AF%81%E7%A0%81%E6%8F%92%E4%BB%B6/" class="post-nav-link">
       <div class="title">
         Next: <i class="fas fa-angle-right"></i>
-        <div class="title-text">登录注册</div>
+        <div class="title-text">Kaptcha验证码插件</div>
       </div>
       <!-- <div class="content">
-        登录注册模块
-1.获取用户的手机号，发送短信，进行短信验证登录
-2.登录成功后判断是否为新用户
-3.如果是新用户需要完善
+        具体实现导入Kaptcha依赖12345&lt;dependency&gt;      &lt;groupId&gt;c
       </div> -->
     </a>
   </div>
